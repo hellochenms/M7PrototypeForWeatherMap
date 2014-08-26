@@ -12,6 +12,13 @@
 		997DEBE919AC289200E27EF9 /* RootView.m in Sources */ = {isa = PBXBuildFile; fileRef = 997DEBE819AC289200E27EF9 /* RootView.m */; };
 		997DEBEC19AC2A2200E27EF9 /* LocationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 997DEBEB19AC2A2200E27EF9 /* LocationView.m */; };
 		997DEBEF19AC2A2D00E27EF9 /* DirectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 997DEBEE19AC2A2D00E27EF9 /* DirectionView.m */; };
+		99BAD17D19AC2EC000A0EB82 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99BAD17C19AC2EC000A0EB82 /* MapKit.framework */; };
+		99BAD17F19AC2ED200A0EB82 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99BAD17E19AC2ED200A0EB82 /* CoreLocation.framework */; };
+		99BAD18319AC37AF00A0EB82 /* CityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 99BAD18219AC37AF00A0EB82 /* CityManager.m */; };
+		99BAD18619AC3A1900A0EB82 /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = 99BAD18519AC3A1900A0EB82 /* City.m */; };
+		99BAD18919AC3C0E00A0EB82 /* WeatherAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 99BAD18819AC3C0E00A0EB82 /* WeatherAnnotation.m */; };
+		99BAD18C19AC3C2600A0EB82 /* WeatherAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 99BAD18B19AC3C2600A0EB82 /* WeatherAnnotationView.m */; };
+		99BAD18F19AC67F200A0EB82 /* DetailInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 99BAD18E19AC67F200A0EB82 /* DetailInfoView.m */; };
 		99BCD1E719AB0CEF005D79EB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99BCD1E619AB0CEF005D79EB /* Foundation.framework */; };
 		99BCD1E919AB0CEF005D79EB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99BCD1E819AB0CEF005D79EB /* CoreGraphics.framework */; };
 		99BCD1EB19AB0CEF005D79EB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99BCD1EA19AB0CEF005D79EB /* UIKit.framework */; };
@@ -47,6 +54,18 @@
 		997DEBEB19AC2A2200E27EF9 /* LocationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationView.m; sourceTree = "<group>"; };
 		997DEBED19AC2A2D00E27EF9 /* DirectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectionView.h; sourceTree = "<group>"; };
 		997DEBEE19AC2A2D00E27EF9 /* DirectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectionView.m; sourceTree = "<group>"; };
+		99BAD17C19AC2EC000A0EB82 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		99BAD17E19AC2ED200A0EB82 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		99BAD18119AC37AF00A0EB82 /* CityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityManager.h; sourceTree = "<group>"; };
+		99BAD18219AC37AF00A0EB82 /* CityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityManager.m; sourceTree = "<group>"; };
+		99BAD18419AC3A1900A0EB82 /* City.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = City.h; sourceTree = "<group>"; };
+		99BAD18519AC3A1900A0EB82 /* City.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = City.m; sourceTree = "<group>"; };
+		99BAD18719AC3C0E00A0EB82 /* WeatherAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherAnnotation.h; sourceTree = "<group>"; };
+		99BAD18819AC3C0E00A0EB82 /* WeatherAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherAnnotation.m; sourceTree = "<group>"; };
+		99BAD18A19AC3C2600A0EB82 /* WeatherAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherAnnotationView.h; sourceTree = "<group>"; };
+		99BAD18B19AC3C2600A0EB82 /* WeatherAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherAnnotationView.m; sourceTree = "<group>"; };
+		99BAD18D19AC67F200A0EB82 /* DetailInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailInfoView.h; sourceTree = "<group>"; };
+		99BAD18E19AC67F200A0EB82 /* DetailInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailInfoView.m; sourceTree = "<group>"; };
 		99BCD1E319AB0CEF005D79EB /* M7PrototypeForWeatherMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = M7PrototypeForWeatherMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99BCD1E619AB0CEF005D79EB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		99BCD1E819AB0CEF005D79EB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -70,8 +89,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99BAD17F19AC2ED200A0EB82 /* CoreLocation.framework in Frameworks */,
 				99BCD1E919AB0CEF005D79EB /* CoreGraphics.framework in Frameworks */,
 				99BCD1EB19AB0CEF005D79EB /* UIKit.framework in Frameworks */,
+				99BAD17D19AC2EC000A0EB82 /* MapKit.framework in Frameworks */,
 				99BCD1E719AB0CEF005D79EB /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -108,6 +129,10 @@
 			children = (
 				997DEBEA19AC2A2200E27EF9 /* LocationView.h */,
 				997DEBEB19AC2A2200E27EF9 /* LocationView.m */,
+				99BAD18719AC3C0E00A0EB82 /* WeatherAnnotation.h */,
+				99BAD18819AC3C0E00A0EB82 /* WeatherAnnotation.m */,
+				99BAD18A19AC3C2600A0EB82 /* WeatherAnnotationView.h */,
+				99BAD18B19AC3C2600A0EB82 /* WeatherAnnotationView.m */,
 			);
 			name = 1.1.Location;
 			sourceTree = "<group>";
@@ -124,6 +149,7 @@
 		997DEBDF19AC25A100E27EF9 /* 2.Data */ = {
 			isa = PBXGroup;
 			children = (
+				99BAD18019AC379600A0EB82 /* 2.1.City */,
 			);
 			name = 2.Data;
 			sourceTree = "<group>";
@@ -133,8 +159,21 @@
 			children = (
 				997DEBE419AC26FE00E27EF9 /* NaviBarView.h */,
 				997DEBE519AC26FE00E27EF9 /* NaviBarView.m */,
+				99BAD18D19AC67F200A0EB82 /* DetailInfoView.h */,
+				99BAD18E19AC67F200A0EB82 /* DetailInfoView.m */,
 			);
 			name = 1.0.Common;
+			sourceTree = "<group>";
+		};
+		99BAD18019AC379600A0EB82 /* 2.1.City */ = {
+			isa = PBXGroup;
+			children = (
+				99BAD18119AC37AF00A0EB82 /* CityManager.h */,
+				99BAD18219AC37AF00A0EB82 /* CityManager.m */,
+				99BAD18419AC3A1900A0EB82 /* City.h */,
+				99BAD18519AC3A1900A0EB82 /* City.m */,
+			);
+			name = 2.1.City;
 			sourceTree = "<group>";
 		};
 		99BCD1DA19AB0CEF005D79EB = {
@@ -159,6 +198,8 @@
 		99BCD1E519AB0CEF005D79EB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				99BAD17E19AC2ED200A0EB82 /* CoreLocation.framework */,
+				99BAD17C19AC2EC000A0EB82 /* MapKit.framework */,
 				99BCD1E619AB0CEF005D79EB /* Foundation.framework */,
 				99BCD1E819AB0CEF005D79EB /* CoreGraphics.framework */,
 				99BCD1EA19AB0CEF005D79EB /* UIKit.framework */,
@@ -272,6 +313,13 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = chenms.m2;
 				TargetAttributes = {
+					99BCD1E219AB0CEF005D79EB = {
+						SystemCapabilities = {
+							com.apple.iOS = {
+								enabled = 1;
+							};
+						};
+					};
 					99BCD1FD19AB0CF0005D79EB = {
 						TestTargetID = 99BCD1E219AB0CEF005D79EB;
 					};
@@ -324,9 +372,14 @@
 				99BCD1F319AB0CEF005D79EB /* main.m in Sources */,
 				997DEBE619AC26FE00E27EF9 /* NaviBarView.m in Sources */,
 				997DEBEC19AC2A2200E27EF9 /* LocationView.m in Sources */,
+				99BAD18319AC37AF00A0EB82 /* CityManager.m in Sources */,
+				99BAD18C19AC3C2600A0EB82 /* WeatherAnnotationView.m in Sources */,
 				997DEBE219AC25E600E27EF9 /* RootViewController.m in Sources */,
 				997DEBEF19AC2A2D00E27EF9 /* DirectionView.m in Sources */,
 				997DEBE919AC289200E27EF9 /* RootView.m in Sources */,
+				99BAD18F19AC67F200A0EB82 /* DetailInfoView.m in Sources */,
+				99BAD18619AC3A1900A0EB82 /* City.m in Sources */,
+				99BAD18919AC3C0E00A0EB82 /* WeatherAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,6 +425,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					"armv7,",
+					armv7s,
+				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -404,6 +462,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -411,6 +470,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					"armv7,",
+					armv7s,
+				);
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -437,6 +501,7 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
 		};

@@ -15,7 +15,8 @@
     #import <Foundation/Foundation.h>
 #endif
 
-typedef void(^SimpleEventHandler)(void);
+typedef void(^VoidEventHandler)(void);
+typedef void(^BOOLEventHandler)(BOOL);
 
 #ifndef is4inch
 #define is4inch ([UIScreen mainScreen].bounds.size.height > 480)
@@ -24,3 +25,10 @@ typedef void(^SimpleEventHandler)(void);
 #ifndef isIOS7
 #define isIOS7 ([[UIDevice currentDevice].systemVersion floatValue] >= 7.0)
 #endif
+
+#pragma mark - 一般常量
+// 西安偏西南
+#define kGlobal_defaultMapCenter_lat    (34.264987 - 1.5)
+#define kGlobal_defaultMapCenter_long   (108.944269 - 3)
+#define kGlobal_defaultMapDelta         (50)
+

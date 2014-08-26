@@ -12,6 +12,6 @@
 @property (nonatomic, readonly) UILabel *titleLabel;
 @property (nonatomic, readonly) UIButton *leftButton;
 @property (nonatomic, readonly) UIButton *rightButton;
-@property (nonatomic, copy) SimpleEventHandler leftButtonTapHandler;
-@property (nonatomic, copy) SimpleEventHandler rightButtonTapHandler;
+@property (nonatomic, copy) VoidEventHandler leftButtonTapHandler;
+@property (nonatomic, copy) VoidEventHandler rightButtonTapHandler;
 @end
