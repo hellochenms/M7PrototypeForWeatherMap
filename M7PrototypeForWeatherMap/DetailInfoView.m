@@ -24,16 +24,19 @@ const static double kAroundViewHeight = 104;
 @property (nonatomic) UILabel   *aroundNameLabel;
 @property (nonatomic) UILabel   *aroundTemperatureLabel;
 @property (nonatomic) UILabel   *aroundPublishDateLabel;
-@property (nonatomic) CGRect    originFrame;
 @property (nonatomic) CGRect    aroundViewOriginFrame;
 @property (nonatomic) UILabel   *belowAroundArea;
+@property (nonatomic) BOOL      aroundEnabled;
 @end
 
 @implementation DetailInfoView
 - (id)initWithFrame:(CGRect)frame{
+    return [self initWithFrame:frame aroundEnabled:YES];
+}
+- (id)initWithFrame:(CGRect)frame aroundEnabled:(BOOL)aroundEnabled{
     self = [super initWithFrame:frame];
     if (self) {
-        self.originFrame = frame;
+        _aroundEnabled = aroundEnabled;
         
         self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.8];//TODO:!
         
@@ -47,13 +50,15 @@ const static double kAroundViewHeight = 104;
         _nameLabel.textColor = [UIColor whiteColor];
         [_scrollView addSubview:_nameLabel];
         
-        //
-        _aroundButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _aroundButton.frame = CGRectMake(200, 0, 66, 44);
-        [_aroundButton setTitle:@"显示周边" forState:UIControlStateNormal];
-        _aroundButton.titleLabel.font = [UIFont systemFontOfSize:16];
-        [_aroundButton addTarget:self action:@selector(onTapAroundButton) forControlEvents:UIControlEventTouchUpInside];
-        [_scrollView addSubview:_aroundButton];
+        if (aroundEnabled) {
+            _aroundButton = [UIButton buttonWithType:UIButtonTypeCustom];
+            _aroundButton.frame = CGRectMake(200, 0, 66, 44);
+            [_aroundButton setTitle:@"显示周边" forState:UIControlStateNormal];
+            _aroundButton.titleLabel.font = [UIFont systemFontOfSize:16];
+            [_aroundButton addTarget:self action:@selector(onTapAroundButton) forControlEvents:UIControlEventTouchUpInside];
+            [_scrollView addSubview:_aroundButton];
+        }
+        
         
         // 关闭按钮
         UIButton *hideButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -77,36 +82,37 @@ const static double kAroundViewHeight = 104;
         _publishDateLabel.textColor = [UIColor whiteColor];
         [_scrollView addSubview:_publishDateLabel];
         
-        
-        // 周边城市
-        _aroundView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_publishDateLabel.frame), CGRectGetWidth(self.bounds), 0)];
-        self.aroundViewOriginFrame = _aroundView.frame;
-        _aroundView.clipsToBounds = YES;
-        [_scrollView addSubview:_aroundView];
-        
-        // 城市名
-        _aroundNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 44)];
-        _aroundNameLabel.backgroundColor = [UIColor clearColor];
-        _aroundNameLabel.font = [UIFont systemFontOfSize:16];
-        _aroundNameLabel.textColor = [UIColor whiteColor];
-        [_aroundView addSubview:_aroundNameLabel];
-        
-        // 温度
-        _aroundTemperatureLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_aroundNameLabel.frame), CGRectGetWidth(self.bounds), 30)];
-        _aroundTemperatureLabel.backgroundColor = [UIColor clearColor];
-        _aroundTemperatureLabel.font = [UIFont systemFontOfSize:16];
-        _aroundTemperatureLabel.textColor = [UIColor whiteColor];
-        [_aroundView addSubview:_aroundTemperatureLabel];
-        
-        // 发布时间
-        _aroundPublishDateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_aroundTemperatureLabel.frame), CGRectGetWidth(self.bounds), 30)];
-        _aroundPublishDateLabel.backgroundColor = [UIColor clearColor];
-        _aroundPublishDateLabel.font = [UIFont systemFontOfSize:14];
-        _aroundPublishDateLabel.textColor = [UIColor whiteColor];
-        [_aroundView addSubview:_aroundPublishDateLabel];
+        if (aroundEnabled) {
+            // 周边城市
+            _aroundView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_publishDateLabel.frame), CGRectGetWidth(self.bounds), 0)];
+            self.aroundViewOriginFrame = _aroundView.frame;
+            _aroundView.clipsToBounds = YES;
+            [_scrollView addSubview:_aroundView];
+            
+            // 城市名
+            _aroundNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 44)];
+            _aroundNameLabel.backgroundColor = [UIColor clearColor];
+            _aroundNameLabel.font = [UIFont systemFontOfSize:16];
+            _aroundNameLabel.textColor = [UIColor whiteColor];
+            [_aroundView addSubview:_aroundNameLabel];
+            
+            // 温度
+            _aroundTemperatureLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_aroundNameLabel.frame), CGRectGetWidth(self.bounds), 30)];
+            _aroundTemperatureLabel.backgroundColor = [UIColor clearColor];
+            _aroundTemperatureLabel.font = [UIFont systemFontOfSize:16];
+            _aroundTemperatureLabel.textColor = [UIColor whiteColor];
+            [_aroundView addSubview:_aroundTemperatureLabel];
+            
+            // 发布时间
+            _aroundPublishDateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_aroundTemperatureLabel.frame), CGRectGetWidth(self.bounds), 30)];
+            _aroundPublishDateLabel.backgroundColor = [UIColor clearColor];
+            _aroundPublishDateLabel.font = [UIFont systemFontOfSize:14];
+            _aroundPublishDateLabel.textColor = [UIColor whiteColor];
+            [_aroundView addSubview:_aroundPublishDateLabel];
+        }
         
         // 其他
-        _belowAroundArea = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_aroundView.frame), CGRectGetWidth(self.bounds), 200)];
+        _belowAroundArea = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(aroundEnabled ? _aroundView.frame : _publishDateLabel.frame), CGRectGetWidth(self.bounds), 200)];
         _belowAroundArea.backgroundColor = [UIColor blueColor];
         _belowAroundArea.font = [UIFont systemFontOfSize:16];
         _belowAroundArea.textColor = [UIColor whiteColor];
@@ -131,7 +137,7 @@ const static double kAroundViewHeight = 104;
         if (self.isShowingAroundDetail) {
             __weak typeof(self) weakSelf = self;
             CGRect belowAroundAreaFrame = self.belowAroundArea.frame;
-            belowAroundAreaFrame.origin.y = CGRectGetMaxY(self.aroundViewOriginFrame);
+            belowAroundAreaFrame.origin.y = CGRectGetMaxY(self.aroundEnabled ? self.aroundViewOriginFrame : self.publishDateLabel.frame);
             [UIView animateWithDuration:0.25
                              animations:^{
                                  weakSelf.aroundView.frame = weakSelf.aroundViewOriginFrame;
@@ -151,7 +157,7 @@ const static double kAroundViewHeight = 104;
             CGRect aroundViewFrame = self.aroundView.frame;
             aroundViewFrame.size.height = kAroundViewHeight;
             CGRect belowAroundAreaFrame = self.belowAroundArea.frame;
-            belowAroundAreaFrame.origin.y = CGRectGetMaxY(aroundViewFrame);
+            belowAroundAreaFrame.origin.y = CGRectGetMaxY(self.aroundEnabled ? aroundViewFrame : self.publishDateLabel.frame);
             [UIView animateWithDuration:0.25
                              animations:^{
                                  weakSelf.aroundView.frame = aroundViewFrame;
@@ -235,7 +241,7 @@ const static double kAroundViewHeight = 104;
     
     self.aroundView.frame = self.aroundViewOriginFrame;
     CGRect belowAroundAreaFrame = self.belowAroundArea.frame;
-    belowAroundAreaFrame.origin.y = CGRectGetMaxY(self.aroundViewOriginFrame);
+    belowAroundAreaFrame.origin.y = CGRectGetMaxY(self.aroundEnabled ? self.aroundViewOriginFrame : self.publishDateLabel.frame);
     self.belowAroundArea.frame = belowAroundAreaFrame;
     self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.scrollView.bounds), CGRectGetMaxY(self.belowAroundArea.frame));
 }

@@ -8,7 +8,8 @@
 
 #import <MapKit/MapKit.h>
 #import "City.h"
+#import "WeatherAnnotation.h"
 
 @interface WeatherAnnotationView : MKAnnotationView
-- (void)reloadData:(City *)city;
+- (void)reloadData:(City *)city cityType:(WACityType)cityType;
 @end

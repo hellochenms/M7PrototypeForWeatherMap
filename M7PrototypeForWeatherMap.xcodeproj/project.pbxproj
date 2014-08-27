@@ -13,7 +13,6 @@
 		997DEBEC19AC2A2200E27EF9 /* LocationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 997DEBEB19AC2A2200E27EF9 /* LocationView.m */; };
 		997DEBEF19AC2A2D00E27EF9 /* DirectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 997DEBEE19AC2A2D00E27EF9 /* DirectionView.m */; };
 		99BAD17D19AC2EC000A0EB82 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99BAD17C19AC2EC000A0EB82 /* MapKit.framework */; };
-		99BAD17F19AC2ED200A0EB82 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99BAD17E19AC2ED200A0EB82 /* CoreLocation.framework */; };
 		99BAD18319AC37AF00A0EB82 /* CityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 99BAD18219AC37AF00A0EB82 /* CityManager.m */; };
 		99BAD18619AC3A1900A0EB82 /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = 99BAD18519AC3A1900A0EB82 /* City.m */; };
 		99BAD18919AC3C0E00A0EB82 /* WeatherAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 99BAD18819AC3C0E00A0EB82 /* WeatherAnnotation.m */; };
@@ -89,7 +88,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99BAD17F19AC2ED200A0EB82 /* CoreLocation.framework in Frameworks */,
 				99BCD1E919AB0CEF005D79EB /* CoreGraphics.framework in Frameworks */,
 				99BCD1EB19AB0CEF005D79EB /* UIKit.framework in Frameworks */,
 				99BAD17D19AC2EC000A0EB82 /* MapKit.framework in Frameworks */,

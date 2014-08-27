@@ -39,7 +39,7 @@
 }
 
 #pragma mark - reload Data
-- (void)reloadData:(City *)city{
+- (void)reloadData:(City *)city cityType:(WACityType)cityType{
     [self.city removeObserver:self forKeyPath:@"updateDate"];
     self.city = city;
     [self.city addObserver:self
@@ -47,18 +47,12 @@
                    options:NSKeyValueObservingOptionNew
                    context:nil];
     [self refreshUI];
+    [self refreshColorWithCityType:cityType];
 }
 
 - (void)refreshUI{
     self.nameLabel.text = self.city.name;
     self.temperatureLabel.text = (self.city.temperature ? [NSString stringWithFormat:@"%d", [self.city.temperature integerValue]] : @"-");
-    if (!((WeatherAnnotation *)self.annotation).isAround) {
-        self.temperatureLabel.backgroundColor = [UIColor redColor];
-        self.nameLabel.backgroundColor = [UIColor blueColor];
-    } else {
-        self.temperatureLabel.backgroundColor = [UIColor orangeColor];
-        self.nameLabel.backgroundColor = [UIColor brownColor];
-    }
 }
 
 #pragma mark - KVO
@@ -68,6 +62,43 @@
     }
 }
 
+#pragma mark - tools
+- (void)refreshColorWithCityType:(WACityType)cityType{
+    UIColor *temperatureColor = nil;
+    UIColor *nameColor = nil;
+    switch (cityType) {
+        case WACityTypeNormal:{
+            temperatureColor = [UIColor redColor];
+            nameColor = [UIColor blueColor];
+            break;
+        }
+        case WACityTypeAround:{
+            temperatureColor = [UIColor orangeColor];
+            nameColor = [UIColor brownColor];
+            break;
+        }
+        case WACityTypeSrc:{
+            temperatureColor = [UIColor redColor];
+            nameColor = [UIColor lightGrayColor];
+            break;
+        }
+        case WACityTypeDest:{
+            temperatureColor = [UIColor blueColor];
+            nameColor = [UIColor lightGrayColor];
+            break;
+        }
+        case WACityTypeDirectionPoint:{
+            temperatureColor = [UIColor orangeColor];
+            nameColor = [UIColor brownColor];
+            break;
+        }
+        default:
+            break;
+    }
+    
+    self.temperatureLabel.backgroundColor = temperatureColor;
+    self.nameLabel.backgroundColor = nameColor;
+}
 
 #pragma mark - dealloc
 - (void)dealloc{

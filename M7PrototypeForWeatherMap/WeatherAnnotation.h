@@ -10,9 +10,18 @@
 #import <MapKit/MapKit.h>
 #import "City.h"
 
+typedef enum {
+    WACityTypeNormal = 6000,
+    WACityTypeAround,
+    WACityTypeSrc,
+    WACityTypeDest,
+    WACityTypeDirectionPoint,
+} WACityType;
+
 @interface WeatherAnnotation : NSObject<MKAnnotation>
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
-@property (nonatomic)           City    *city;
-@property (nonatomic)           BOOL    isAround;
+@property (nonatomic)           City        *city;
+@property (nonatomic)           BOOL        isAround;
+@property (nonatomic)           WACityType  cityType;
 - (id)initWithCoordinate:(CLLocationCoordinate2D)coordinate;
 @end

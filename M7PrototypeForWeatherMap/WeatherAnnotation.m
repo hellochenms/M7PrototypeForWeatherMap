@@ -17,6 +17,7 @@
     self = [super init];
     if (self) {
         _coordinate = coordinate;
+        _cityType = WACityTypeNormal;
     }
     
     return self;

@@ -14,6 +14,7 @@ typedef void(^DIVTapAroundButtonHandler)(BOOL, City*);
 @interface DetailInfoView : UIView
 @property (nonatomic, copy) VoidEventHandler            tapHideButtonHandler;
 @property (nonatomic, copy) DIVTapAroundButtonHandler   tapAroundButtonHandler;
+- (id)initWithFrame:(CGRect)frame aroundEnabled:(BOOL)aroundEnabled;
 - (void)hideAround;
 - (void)reloadData:(City *)city isAround:(BOOL)isAround;
 - (void)clearData;

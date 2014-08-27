@@ -37,7 +37,7 @@
         _mapView.delegate = self;
         [self addSubview:_mapView];
         
-        _detailView = [[DetailInfoView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.bounds), CGRectGetWidth(self.bounds), 200)];
+        _detailView = [[DetailInfoView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.bounds), CGRectGetWidth(self.bounds), 200) aroundEnabled:YES];
         __weak typeof(self) weakSelf = self;
         _detailView.tapHideButtonHandler = ^{
             [weakSelf hideDetailView];
@@ -65,6 +65,7 @@
     for (City *city in [CityManager sharedInstance].cities) {
         anno = [[WeatherAnnotation alloc] initWithCoordinate:CLLocationCoordinate2DMake(city.latitude, city.longitude)];
         anno.city = city;
+        anno.cityType = WACityTypeNormal;
         [self.annos addObject:anno];
     }
     [self.mapView addAnnotations:self.annos];
@@ -78,6 +79,7 @@
         anno = [[WeatherAnnotation alloc] initWithCoordinate:CLLocationCoordinate2DMake(city.latitude, city.longitude)];
         anno.city = city;
         anno.isAround = YES;
+        anno.cityType = WACityTypeAround;
         [self.aroundAnnos addObject:anno];
     }
     if ([self.aroundAnnos count] > 0) {
@@ -96,7 +98,7 @@
             annoView = [[WeatherAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:cityAnnoCellIdentifier];
         }
         annoView.annotation = annotation;
-        [annoView reloadData:((WeatherAnnotation *)annotation).city];
+        [annoView reloadData:((WeatherAnnotation *)annotation).city cityType:((WeatherAnnotation *)annotation).cityType];
         
         return annoView;
     }
