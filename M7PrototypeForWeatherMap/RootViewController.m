@@ -8,6 +8,8 @@
 
 #import "RootViewController.h"
 #import "RootView.h"
+#import "LocationManageViewController.h"
+#import "DirectionManageViewController.h"
 
 @interface RootViewController()
 
@@ -24,6 +26,15 @@
     frame.size.height -= (isIOS7 ? 0 : 20);
     
     RootView *rootView = [[RootView alloc] initWithFrame:frame];
+    rootView.tapTitleButtonHandler = ^(BOOL isShowingDirectionView){
+        if (!isShowingDirectionView) {
+            LocationManageViewController *controller = [LocationManageViewController new];
+            [self presentViewController:controller animated:YES completion:nil];
+        } else {
+            DirectionManageViewController *controller = [DirectionManageViewController new];
+            [self presentViewController:controller animated:YES completion:nil];
+        }
+    };
     [self.view addSubview:rootView];
 }
 

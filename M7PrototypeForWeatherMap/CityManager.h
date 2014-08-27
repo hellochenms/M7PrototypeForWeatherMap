@@ -20,5 +20,9 @@ FOUNDATION_EXTERN const NSString * const kCMDictKeyDestCity;
 @property (nonatomic)           NSArray *tempAroundCities;
 @property (nonatomic, readonly) NSArray *directions;
 + (instancetype)sharedInstance;
+- (void)addCity:(City *)city;
+- (void)removeCity:(City *)city;
+- (void)addDirection:(NSDictionary *)direction;
+- (void)removeDirection:(NSDictionary *)direction;
 - (void)requestDirectionWithSrcCity:(City *)srcCity destCity:(City *)destCity completionHandler:(CMDirectionCompletionHandler)completionHandler failHandler:(CMDirectionFailHandler)failHandler;
 @end

@@ -20,6 +20,7 @@
 @property (nonatomic) WeatherAnnotation *srcAnno;
 @property (nonatomic) WeatherAnnotation *destAnno;
 @property (nonatomic) NSMutableArray    *directionAnnos;
+@property (nonatomic) MKPolyline        *line;
 @end
 
 @implementation DirectionView
@@ -44,6 +45,11 @@
         [self addSubview:_detailView];
         
         [self reloadData];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(onNotifyRemoveDirection)
+                                                     name:kGlobal_NotificationName_RemoveDirection
+                                                   object:nil];
     }
     
     return self;
@@ -57,7 +63,13 @@
     self.destAnno = nil;
     [self.mapView removeAnnotations:self.directionAnnos];
     [self.directionAnnos removeAllObjects];
+    [self.mapView removeOverlay:self.line];
+    self.line = nil;
     
+#warning TODO:chenms:测试逻辑
+    if ([[CityManager sharedInstance].directions count] <= 0) {
+        return;
+    }
     NSDictionary *directionSrcDest = [[CityManager sharedInstance].directions objectAtIndex:0];
 
     City *srcCity = [directionSrcDest objectForKey:kCMDictKeySrcCity];
@@ -99,8 +111,8 @@
         points[i + 1] =  MKMapPointForCoordinate(CLLocationCoordinate2DMake(city.latitude, city.longitude));
     }
     points[directionPointCount + 1] = MKMapPointForCoordinate(CLLocationCoordinate2DMake(self.destAnno.city.latitude, self.destAnno.city.longitude));
-    MKPolyline *line = [MKPolyline polylineWithPoints:points count:directionPointCount + 2];
-    [self.mapView addOverlay:line];
+    self.line = [MKPolyline polylineWithPoints:points count:directionPointCount + 2];
+    [self.mapView addOverlay:self.line];
     [self.mapView addAnnotations:self.directionAnnos];
 }
 
@@ -162,6 +174,16 @@
                          [weakSelf.detailView clearData];
                          [self.mapView selectAnnotation:nil animated:NO];
                      }];
+}
+
+#pragma mark - 通知
+- (void)onNotifyRemoveDirection{
+    [self reloadData];
+}
+
+#pragma mark - dealloc
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

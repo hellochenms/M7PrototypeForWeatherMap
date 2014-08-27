@@ -15,4 +15,19 @@
     self.publishDate = [[NSDate date] dateByAddingTimeInterval:-60 * 5];
     self.updateDate = [NSDate date];
 }
+
+#pragma mark - 
+- (BOOL)isEqual:(id)object{
+    if (!object || ![object isKindOfClass:[City class]]) {
+        return NO;
+    }
+    City *city = (City *)object;
+    if ([self.name isEqualToString:city.name]
+        && [self.address isEqualToString:city.address]) {
+        return YES;
+    }
+    
+    return NO;
+}
+
 @end

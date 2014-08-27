@@ -26,6 +26,12 @@ typedef void(^BOOLEventHandler)(BOOL);
 #define isIOS7 ([[UIDevice currentDevice].systemVersion floatValue] >= 7.0)
 #endif
 
+#pragma mark - 通知
+#define kGlobal_NotificationName_RemoveCity         @"kGlobal_NotificationName_RemoveCity"
+#define kGlobal_NotificationName_AddCity            @"kGlobal_NotificationName_AddCity"
+#define kGlobal_NotificationName_RemoveDirection    @"kGlobal_NotificationName_RemoveDirection"
+#define kGlobal_NotificationName_AddDirection       @"kGlobal_NotificationName_AddDirection"
+
 #pragma mark - 一般常量
 // 西安偏西南
 #define kGlobal_defaultMapCenter_lat    (34.264987 - 1.5)

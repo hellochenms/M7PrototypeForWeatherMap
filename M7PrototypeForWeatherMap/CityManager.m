@@ -125,6 +125,39 @@ const static NSInteger kCMUpdateTimeThreshold = 3;
     }
 }
 
+#pragma mark - 城市
+- (void)addCity:(City *)city{
+    __block BOOL isExits = NO;
+    [self.innerCities enumerateObjectsUsingBlock:^(City *aCity, NSUInteger idx, BOOL *stop) {
+        if ([aCity isEqual:city]) {
+            isExits = YES;
+            *stop = YES;
+        }
+    }];
+    [self.innerCities addObject:city];
+}
+- (void)removeCity:(City *)city{
+    [self.innerCities removeObject:city];
+}
+
+#pragma mark - 路线
+- (void)addDirection:(NSDictionary *)direction{
+    
+}
+- (void)removeDirection:(NSDictionary *)direction{
+    __block NSDictionary *targetDirection = nil;
+    [self.innerDirections enumerateObjectsUsingBlock:^(NSDictionary *aDirection, NSUInteger idx, BOOL *stop) {
+        if ([[direction objectForKey:kCMDictKeySrcCity] isEqual:[aDirection objectForKey:kCMDictKeySrcCity]]
+            && [[direction objectForKey:kCMDictKeyDestCity] isEqual:[aDirection objectForKey:kCMDictKeyDestCity]]) {
+            targetDirection = aDirection;
+            *stop = YES;
+        }
+    }];
+    if (targetDirection) {
+        [self.innerDirections removeObject:targetDirection];
+    }
+}
+
 #pragma - _temp
 - (void)_tempLoadDefaultCities{
     // 北京
@@ -196,16 +229,18 @@ const static NSInteger kCMUpdateTimeThreshold = 3;
     // 北京-》广州
     NSMutableDictionary *direction = [NSMutableDictionary dictionary];
     City *city = [City new];
-    city.name = @"北京";
+    city.name = @"北京市";
     city.latitude = 39.904667;
     city.longitude = 116.408198;
+    city.address = @"北京市,北京市,中国";
     city.timeZone = [[NSTimeZone alloc] initWithName:@"Asia/Shanghai"];
     [direction setObject:city forKey:kCMDictKeySrcCity];
     
     city = [City new];
-    city.name = @"广州";
+    city.name = @"广州市";
     city.latitude = 23.129163;
     city.longitude = 113.264435;
+    city.address = @"广州市,广东省,中国";
     city.timeZone = [[NSTimeZone alloc] initWithName:@"Asia/Shanghai"];
     [direction setObject:city forKey:kCMDictKeyDestCity];
     

@@ -51,14 +51,23 @@
         };
         [self addSubview:_detailView];
         
-        [self reloadData];
+        [self reloadCities];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(onNotifyRemoveCity)
+                                                     name:kGlobal_NotificationName_RemoveCity
+                                                   object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(onNotifyAddCity)
+                                                     name:kGlobal_NotificationName_AddCity
+                                                   object:nil];
     }
     
     return self;
 }
 
 #pragma mark - reload Data
-- (void)reloadData{
+- (void)reloadCities{
     [self.mapView removeAnnotations:self.annos];
     [self.annos removeAllObjects];
     WeatherAnnotation *anno = nil;
@@ -143,6 +152,25 @@
                          [weakSelf.detailView clearData];
                          [self.mapView selectAnnotation:nil animated:NO];
                      }];
+}
+
+#pragma mark - 通知
+- (void)onNotifyRemoveCity{
+    [self reloadData];
+}
+- (void)onNotifyAddCity{
+    [self reloadData];
+}
+
+- (void)reloadData{
+    [self reloadAroundCities:nil];
+    [self hideDetailView];
+    [self reloadCities];
+}
+
+#pragma mark - dealloc
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 

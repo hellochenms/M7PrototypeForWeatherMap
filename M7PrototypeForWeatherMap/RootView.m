@@ -28,6 +28,13 @@
     
     _naviBarView = [[NaviBarView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), 44 + (isIOS7 ? 20 : 0))];
     __weak typeof(self) weakSelf = self;
+    [_naviBarView.titleButton setTitle:@"可点击" forState:UIControlStateNormal];
+    [_naviBarView.leftButton setTitle:@"切换" forState:UIControlStateNormal];
+    _naviBarView.titleButtonTapHandler = ^{
+        if (weakSelf.tapTitleButtonHandler) {
+            weakSelf.tapTitleButtonHandler(weakSelf.isShowingDirectionView);
+        }
+    };
     _naviBarView.leftButtonTapHandler = ^{
         if (weakSelf.isShowingDirectionView) {
             [weakSelf bringSubviewToFront:weakSelf.locationView];

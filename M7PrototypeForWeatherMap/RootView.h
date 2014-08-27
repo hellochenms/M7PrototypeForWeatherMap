@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface RootView : UIView
-
+@property (nonatomic, copy) BOOLEventHandler tapTitleButtonHandler;
 @end

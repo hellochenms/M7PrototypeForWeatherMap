@@ -7,6 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		994B068919ADB57700B5DF34 /* LocationManageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 994B068819ADB57700B5DF34 /* LocationManageViewController.m */; };
+		994B068C19ADB58700B5DF34 /* DirectionManageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 994B068B19ADB58700B5DF34 /* DirectionManageViewController.m */; };
+		994B068F19ADB8B500B5DF34 /* LocationManageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 994B068E19ADB8B500B5DF34 /* LocationManageView.m */; };
+		994B069219ADBB0900B5DF34 /* DirectionManageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 994B069119ADBB0900B5DF34 /* DirectionManageView.m */; };
+		994B069519ADBE2400B5DF34 /* LocationManageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 994B069419ADBE2400B5DF34 /* LocationManageCell.m */; };
+		994B069819ADCFA900B5DF34 /* AddLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 994B069719ADCFA900B5DF34 /* AddLocationViewController.m */; };
+		994B069B19ADCFCF00B5DF34 /* AddLocationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 994B069A19ADCFCF00B5DF34 /* AddLocationView.m */; };
+		994B069F19ADD1EE00B5DF34 /* HotCitiesConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 994B069E19ADD1EE00B5DF34 /* HotCitiesConfig.m */; };
+		994B06A119ADD1F700B5DF34 /* cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 994B06A019ADD1F700B5DF34 /* cities.json */; };
+		994B06A519ADD25800B5DF34 /* CitySearcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 994B06A419ADD25800B5DF34 /* CitySearcher.m */; };
+		994B06AA19ADD3D500B5DF34 /* CityAddCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 994B06A719ADD3D500B5DF34 /* CityAddCollectionViewCell.m */; };
+		994B06AB19ADD3D500B5DF34 /* CityAddSearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 994B06A919ADD3D500B5DF34 /* CityAddSearchResultCell.m */; };
+		994B06AD19ADD9D700B5DF34 /* hotcitiesConfigure.json in Resources */ = {isa = PBXBuildFile; fileRef = 994B06AC19ADD9D700B5DF34 /* hotcitiesConfigure.json */; };
+		994B06B019ADE46200B5DF34 /* DirectionManageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 994B06AF19ADE46200B5DF34 /* DirectionManageCell.m */; };
 		997DEBE219AC25E600E27EF9 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 997DEBE119AC25E600E27EF9 /* RootViewController.m */; };
 		997DEBE619AC26FE00E27EF9 /* NaviBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 997DEBE519AC26FE00E27EF9 /* NaviBarView.m */; };
 		997DEBE919AC289200E27EF9 /* RootView.m in Sources */ = {isa = PBXBuildFile; fileRef = 997DEBE819AC289200E27EF9 /* RootView.m */; };
@@ -43,6 +57,32 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		994B068719ADB57700B5DF34 /* LocationManageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManageViewController.h; sourceTree = "<group>"; };
+		994B068819ADB57700B5DF34 /* LocationManageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManageViewController.m; sourceTree = "<group>"; };
+		994B068A19ADB58700B5DF34 /* DirectionManageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectionManageViewController.h; sourceTree = "<group>"; };
+		994B068B19ADB58700B5DF34 /* DirectionManageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectionManageViewController.m; sourceTree = "<group>"; };
+		994B068D19ADB8B500B5DF34 /* LocationManageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManageView.h; sourceTree = "<group>"; };
+		994B068E19ADB8B500B5DF34 /* LocationManageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManageView.m; sourceTree = "<group>"; };
+		994B069019ADBB0900B5DF34 /* DirectionManageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectionManageView.h; sourceTree = "<group>"; };
+		994B069119ADBB0900B5DF34 /* DirectionManageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectionManageView.m; sourceTree = "<group>"; };
+		994B069319ADBE2400B5DF34 /* LocationManageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManageCell.h; sourceTree = "<group>"; };
+		994B069419ADBE2400B5DF34 /* LocationManageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManageCell.m; sourceTree = "<group>"; };
+		994B069619ADCFA900B5DF34 /* AddLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddLocationViewController.h; sourceTree = "<group>"; };
+		994B069719ADCFA900B5DF34 /* AddLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddLocationViewController.m; sourceTree = "<group>"; };
+		994B069919ADCFCF00B5DF34 /* AddLocationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddLocationView.h; sourceTree = "<group>"; };
+		994B069A19ADCFCF00B5DF34 /* AddLocationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddLocationView.m; sourceTree = "<group>"; };
+		994B069D19ADD1EE00B5DF34 /* HotCitiesConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotCitiesConfig.h; sourceTree = "<group>"; };
+		994B069E19ADD1EE00B5DF34 /* HotCitiesConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotCitiesConfig.m; sourceTree = "<group>"; };
+		994B06A019ADD1F700B5DF34 /* cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cities.json; sourceTree = "<group>"; };
+		994B06A319ADD25800B5DF34 /* CitySearcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CitySearcher.h; sourceTree = "<group>"; };
+		994B06A419ADD25800B5DF34 /* CitySearcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CitySearcher.m; sourceTree = "<group>"; };
+		994B06A619ADD3D400B5DF34 /* CityAddCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityAddCollectionViewCell.h; sourceTree = "<group>"; };
+		994B06A719ADD3D500B5DF34 /* CityAddCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityAddCollectionViewCell.m; sourceTree = "<group>"; };
+		994B06A819ADD3D500B5DF34 /* CityAddSearchResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityAddSearchResultCell.h; sourceTree = "<group>"; };
+		994B06A919ADD3D500B5DF34 /* CityAddSearchResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityAddSearchResultCell.m; sourceTree = "<group>"; };
+		994B06AC19ADD9D700B5DF34 /* hotcitiesConfigure.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = hotcitiesConfigure.json; sourceTree = "<group>"; };
+		994B06AE19ADE46200B5DF34 /* DirectionManageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectionManageCell.h; sourceTree = "<group>"; };
+		994B06AF19ADE46200B5DF34 /* DirectionManageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectionManageCell.m; sourceTree = "<group>"; };
 		997DEBE019AC25E600E27EF9 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		997DEBE119AC25E600E27EF9 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		997DEBE419AC26FE00E27EF9 /* NaviBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NaviBarView.h; sourceTree = "<group>"; };
@@ -108,6 +148,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		994B068419ADB50E00B5DF34 /* 1.2.LocationManage */ = {
+			isa = PBXGroup;
+			children = (
+				994B068719ADB57700B5DF34 /* LocationManageViewController.h */,
+				994B068819ADB57700B5DF34 /* LocationManageViewController.m */,
+				994B068D19ADB8B500B5DF34 /* LocationManageView.h */,
+				994B068E19ADB8B500B5DF34 /* LocationManageView.m */,
+				994B069319ADBE2400B5DF34 /* LocationManageCell.h */,
+				994B069419ADBE2400B5DF34 /* LocationManageCell.m */,
+			);
+			name = 1.2.LocationManage;
+			sourceTree = "<group>";
+		};
+		994B068619ADB54E00B5DF34 /* 1.4.DirectionManage */ = {
+			isa = PBXGroup;
+			children = (
+				994B068A19ADB58700B5DF34 /* DirectionManageViewController.h */,
+				994B068B19ADB58700B5DF34 /* DirectionManageViewController.m */,
+				994B069019ADBB0900B5DF34 /* DirectionManageView.h */,
+				994B069119ADBB0900B5DF34 /* DirectionManageView.m */,
+				994B06AE19ADE46200B5DF34 /* DirectionManageCell.h */,
+				994B06AF19ADE46200B5DF34 /* DirectionManageCell.m */,
+			);
+			name = 1.4.DirectionManage;
+			sourceTree = "<group>";
+		};
+		994B069C19ADD1C300B5DF34 /* 2.1.1.HotCity */ = {
+			isa = PBXGroup;
+			children = (
+				994B069D19ADD1EE00B5DF34 /* HotCitiesConfig.h */,
+				994B069E19ADD1EE00B5DF34 /* HotCitiesConfig.m */,
+				994B06AC19ADD9D700B5DF34 /* hotcitiesConfigure.json */,
+				994B06A019ADD1F700B5DF34 /* cities.json */,
+			);
+			name = 2.1.1.HotCity;
+			sourceTree = "<group>";
+		};
+		994B06A219ADD22900B5DF34 /* 2.1.2.CitySearcher */ = {
+			isa = PBXGroup;
+			children = (
+				994B06A319ADD25800B5DF34 /* CitySearcher.h */,
+				994B06A419ADD25800B5DF34 /* CitySearcher.m */,
+			);
+			name = 2.1.2.CitySearcher;
+			sourceTree = "<group>";
+		};
 		997DEBDC19AC24F100E27EF9 /* 1.UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -117,7 +203,9 @@
 				997DEBE819AC289200E27EF9 /* RootView.m */,
 				997DEBE319AC26DB00E27EF9 /* 1.0.Common */,
 				997DEBDD19AC250800E27EF9 /* 1.1.Location */,
-				997DEBDE19AC255000E27EF9 /* 1.2.Direction */,
+				994B068419ADB50E00B5DF34 /* 1.2.LocationManage */,
+				997DEBDE19AC255000E27EF9 /* 1.3.Direction */,
+				994B068619ADB54E00B5DF34 /* 1.4.DirectionManage */,
 			);
 			name = 1.UI;
 			sourceTree = "<group>";
@@ -135,13 +223,13 @@
 			name = 1.1.Location;
 			sourceTree = "<group>";
 		};
-		997DEBDE19AC255000E27EF9 /* 1.2.Direction */ = {
+		997DEBDE19AC255000E27EF9 /* 1.3.Direction */ = {
 			isa = PBXGroup;
 			children = (
 				997DEBED19AC2A2D00E27EF9 /* DirectionView.h */,
 				997DEBEE19AC2A2D00E27EF9 /* DirectionView.m */,
 			);
-			name = 1.2.Direction;
+			name = 1.3.Direction;
 			sourceTree = "<group>";
 		};
 		997DEBDF19AC25A100E27EF9 /* 2.Data */ = {
@@ -159,6 +247,14 @@
 				997DEBE519AC26FE00E27EF9 /* NaviBarView.m */,
 				99BAD18D19AC67F200A0EB82 /* DetailInfoView.h */,
 				99BAD18E19AC67F200A0EB82 /* DetailInfoView.m */,
+				994B069619ADCFA900B5DF34 /* AddLocationViewController.h */,
+				994B069719ADCFA900B5DF34 /* AddLocationViewController.m */,
+				994B069919ADCFCF00B5DF34 /* AddLocationView.h */,
+				994B069A19ADCFCF00B5DF34 /* AddLocationView.m */,
+				994B06A619ADD3D400B5DF34 /* CityAddCollectionViewCell.h */,
+				994B06A719ADD3D500B5DF34 /* CityAddCollectionViewCell.m */,
+				994B06A819ADD3D500B5DF34 /* CityAddSearchResultCell.h */,
+				994B06A919ADD3D500B5DF34 /* CityAddSearchResultCell.m */,
 			);
 			name = 1.0.Common;
 			sourceTree = "<group>";
@@ -170,6 +266,8 @@
 				99BAD18219AC37AF00A0EB82 /* CityManager.m */,
 				99BAD18419AC3A1900A0EB82 /* City.h */,
 				99BAD18519AC3A1900A0EB82 /* City.m */,
+				994B069C19ADD1C300B5DF34 /* 2.1.1.HotCity */,
+				994B06A219ADD22900B5DF34 /* 2.1.2.CitySearcher */,
 			);
 			name = 2.1.City;
 			sourceTree = "<group>";
@@ -346,6 +444,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				994B06A119ADD1F700B5DF34 /* cities.json in Resources */,
+				994B06AD19ADD9D700B5DF34 /* hotcitiesConfigure.json in Resources */,
 				99BCD1F119AB0CEF005D79EB /* InfoPlist.strings in Resources */,
 				99BCD1F919AB0CEF005D79EB /* Images.xcassets in Resources */,
 			);
@@ -367,17 +467,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				99BCD1F719AB0CEF005D79EB /* AppDelegate.m in Sources */,
+				994B068C19ADB58700B5DF34 /* DirectionManageViewController.m in Sources */,
 				99BCD1F319AB0CEF005D79EB /* main.m in Sources */,
+				994B069819ADCFA900B5DF34 /* AddLocationViewController.m in Sources */,
 				997DEBE619AC26FE00E27EF9 /* NaviBarView.m in Sources */,
 				997DEBEC19AC2A2200E27EF9 /* LocationView.m in Sources */,
+				994B069F19ADD1EE00B5DF34 /* HotCitiesConfig.m in Sources */,
+				994B069219ADBB0900B5DF34 /* DirectionManageView.m in Sources */,
 				99BAD18319AC37AF00A0EB82 /* CityManager.m in Sources */,
 				99BAD18C19AC3C2600A0EB82 /* WeatherAnnotationView.m in Sources */,
+				994B06B019ADE46200B5DF34 /* DirectionManageCell.m in Sources */,
 				997DEBE219AC25E600E27EF9 /* RootViewController.m in Sources */,
 				997DEBEF19AC2A2D00E27EF9 /* DirectionView.m in Sources */,
+				994B06A519ADD25800B5DF34 /* CitySearcher.m in Sources */,
 				997DEBE919AC289200E27EF9 /* RootView.m in Sources */,
+				994B069B19ADCFCF00B5DF34 /* AddLocationView.m in Sources */,
 				99BAD18F19AC67F200A0EB82 /* DetailInfoView.m in Sources */,
+				994B068919ADB57700B5DF34 /* LocationManageViewController.m in Sources */,
 				99BAD18619AC3A1900A0EB82 /* City.m in Sources */,
+				994B068F19ADB8B500B5DF34 /* LocationManageView.m in Sources */,
 				99BAD18919AC3C0E00A0EB82 /* WeatherAnnotation.m in Sources */,
+				994B069519ADBE2400B5DF34 /* LocationManageCell.m in Sources */,
+				994B06AB19ADD3D500B5DF34 /* CityAddSearchResultCell.m in Sources */,
+				994B06AA19ADD3D500B5DF34 /* CityAddCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
