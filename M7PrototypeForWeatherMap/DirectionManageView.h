@@ -13,6 +13,7 @@
 @property (nonatomic, copy) VoidEventHandler tapBackButtonHandler;
 @property (nonatomic, copy) VoidEventHandler tapAddSrcCityButtonHandler;
 @property (nonatomic, copy) VoidEventHandler tapAddDestCityButtonHandler;
+@property (nonatomic, copy) VoidEventHandler tapAddDirectionButtonHandler;
 - (void)setupSrcCity:(City *)srcCity;
 - (void)setupDestCity:(City *)destCity;
 @end

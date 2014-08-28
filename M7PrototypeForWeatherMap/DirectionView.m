@@ -153,8 +153,8 @@
 #warning TODO: DEPRECATED
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay NS_DEPRECATED_IOS(4_0, 7_0){
     MKPolylineView *lineView = [[MKPolylineView alloc] initWithOverlay:overlay];
-    lineView.strokeColor = [[UIColor blueColor] colorWithAlphaComponent:0.9];
-    lineView.lineWidth = 6;
+    lineView.strokeColor = [UIColor blueColor];
+    lineView.lineWidth = 10;
 
     return lineView;
 }

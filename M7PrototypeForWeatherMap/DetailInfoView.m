@@ -195,11 +195,11 @@ const static double kAroundViewHeight = 104;
 
 #pragma mark - event handle
 - (void)onTapHideButton{
-    self.isShowingAroundInMap = NO;
-    [self handlerWithIsShowingAroundInMap:self.isShowingAroundInMap];
-    if (self.tapAroundButtonHandler) {
-        self.tapAroundButtonHandler(NO, nil);
-    }
+//    self.isShowingAroundInMap = NO;
+//    [self handlerWithIsShowingAroundInMap:self.isShowingAroundInMap];
+//    if (self.tapAroundButtonHandler) {
+//        self.tapAroundButtonHandler(NO, nil);
+//    }
     if (self.tapHideButtonHandler) {
         self.tapHideButtonHandler();
     }

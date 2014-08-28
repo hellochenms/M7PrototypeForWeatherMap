@@ -40,6 +40,9 @@
         };
         [weakSelf presentViewController:controller animated:YES completion:nil];
     };
+    self.manageView.tapAddDirectionButtonHandler = ^{
+        [weakSelf dismissViewControllerAnimated:YES completion:nil];
+    };
     [self.view addSubview:self.manageView];
 }
 @end

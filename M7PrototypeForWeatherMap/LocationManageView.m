@@ -13,6 +13,7 @@
 
 @interface LocationManageView()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic) NaviBarView   *naviBarView;
+@property (nonatomic) UIButton      *addButton;
 @property (nonatomic) UITableView   *tableView;
 @end
 
@@ -35,20 +36,17 @@
             weakSelf.tapBackButtonHandler();
         }
     };
-    [_naviBarView.rightButton setTitle:@"编辑" forState:UIControlStateNormal];
-    _naviBarView.rightButtonTapHandler = ^{
-        weakSelf.tableView.editing = !weakSelf.tableView.editing;
-        [weakSelf refreshEditButton];
-    };
-    [_naviBarView.rightRightButton setTitle:@"添加" forState:UIControlStateNormal];
-    _naviBarView.rightRightButtonTapHandler = ^{
-        if (weakSelf.tapAddButtonHandler) {
-            weakSelf.tapAddButtonHandler();
-        }
-    };
     [self addSubview:_naviBarView];
     
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_naviBarView.frame), CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) - CGRectGetMaxY(_naviBarView.frame)) style:UITableViewStylePlain];
+    _addButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    _addButton.frame = CGRectMake(0, CGRectGetMaxY(_naviBarView.frame), CGRectGetWidth(self.bounds), 44);
+    _addButton.backgroundColor = [UIColor lightGrayColor];//TODO:!
+    [_addButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [_addButton setTitle:@"添加城市" forState:UIControlStateNormal];
+    [_addButton addTarget:self action:@selector(onTapAddButton) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:_addButton];
+    
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_addButton.frame), CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) - CGRectGetMaxY(_addButton.frame)) style:UITableViewStylePlain];
     _tableView.dataSource = self;
     _tableView.delegate = self;
     [self addSubview:_tableView];
@@ -86,6 +84,13 @@
     [[CityManager sharedInstance] removeCity:[[CityManager sharedInstance].cities objectAtIndex:indexPath.row]];
     [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     [[NSNotificationCenter defaultCenter] postNotificationName:kGlobal_NotificationName_RemoveCity object:nil];
+}
+
+#pragma mark - 
+- (void)onTapAddButton{
+    if (self.tapAddButtonHandler) {
+        self.tapAddButtonHandler();
+    }
 }
 
 #pragma mark - 通知

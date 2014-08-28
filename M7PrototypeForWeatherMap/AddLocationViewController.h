@@ -11,5 +11,6 @@
 
 @interface AddLocationViewController : UIViewController
 @property (nonatomic, copy) ALVDidSelectCityHandler didSelectCityHandler;
+@property (nonatomic, copy) VoidEventHandler dismissCompletionHandler;
 - (id)initWithType:(ALVAddViewType)type;
 @end

@@ -177,7 +177,8 @@
                      animations:^{
                          weakSelf.detailView.frame = detailFrame;
                      } completion:^(BOOL finished) {
-                         [weakSelf.detailView clearData];
+                         // TODO:chenms:!
+//                         [weakSelf.detailView clearData];
                          [self.mapView selectAnnotation:nil animated:NO];
                      }];
 }

@@ -13,7 +13,6 @@
 
 @interface DirectionManageView()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic) NaviBarView   *naviBarView;
-@property (nonatomic) UILabel       *addCityLabel;
 @property (nonatomic) UIButton      *addSrcCityButton;
 @property (nonatomic) UIButton      *addDestCityButton;
 @property (nonatomic) UIButton      *addCityButton;
@@ -43,36 +42,29 @@
     [self addSubview:_naviBarView];
     
     // 添加路线
-    _addCityLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_naviBarView.frame), 80, 44)];
-    _addCityLabel.backgroundColor = [UIColor clearColor];
-    _addCityLabel.font = [UIFont systemFontOfSize:16];
-    _addCityLabel.text = @"添加路线";
-    [self addSubview:_addCityLabel];
-    
-    
     _addSrcCityButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    _addSrcCityButton.frame = CGRectMake(80, CGRectGetMaxY(_naviBarView.frame), 80, 44);
+    _addSrcCityButton.frame = CGRectMake(0, CGRectGetMaxY(_naviBarView.frame), 100, 44);
     _addSrcCityButton.titleLabel.font = [UIFont systemFontOfSize:12];
     [_addSrcCityButton setTitle:@"起点" forState:UIControlStateNormal];
     [_addSrcCityButton addTarget:self action:@selector(onTapAddSrcButton) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_addSrcCityButton];
     
     _addDestCityButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    _addDestCityButton.frame = CGRectMake(80 * 2, CGRectGetMaxY(_naviBarView.frame), 80, 44);
+    _addDestCityButton.frame = CGRectMake(100, CGRectGetMaxY(_naviBarView.frame), 100, 44);
     _addDestCityButton.titleLabel.font = [UIFont systemFontOfSize:12];
     [_addDestCityButton setTitle:@"终点" forState:UIControlStateNormal];
     [_addDestCityButton addTarget:self action:@selector(onTapAddDestButton) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_addDestCityButton];
     
     _addCityButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    _addCityButton.frame = CGRectMake(80 * 3, CGRectGetMaxY(_naviBarView.frame), 80, 44);
+    _addCityButton.frame = CGRectMake(100 * 2, CGRectGetMaxY(_naviBarView.frame), 120, 44);
     _addCityButton.titleLabel.font = [UIFont systemFontOfSize:16];
     [_addCityButton setTitle:@"添加" forState:UIControlStateNormal];
     [_addCityButton addTarget:self action:@selector(onTapAddCityButton) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_addCityButton];
     
     // 路线列表
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_addCityLabel.frame), CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) - CGRectGetMaxY(_addCityLabel.frame)) style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_addSrcCityButton.frame), CGRectGetWidth(self.bounds), CGRectGetHeight(self.bounds) - CGRectGetMaxY(_addSrcCityButton.frame)) style:UITableViewStylePlain];
     _tableView.dataSource = self;
     _tableView.delegate = self;
     [self addSubview:_tableView];
@@ -113,6 +105,9 @@
     [[CityManager sharedInstance] addDirection:dirction];
     [self.tableView reloadData];
     [[NSNotificationCenter defaultCenter] postNotificationName:kGlobal_NotificationName_AddDirection object:nil];
+    if (self.tapAddDirectionButtonHandler) {
+        self.tapAddDirectionButtonHandler();
+    }
 }
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate

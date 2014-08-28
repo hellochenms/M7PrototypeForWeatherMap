@@ -44,7 +44,7 @@
         if (weakSelf.didSelectCityHandler) {
             weakSelf.didSelectCityHandler(city);
         }
-        [weakSelf dismissViewControllerAnimated:YES completion:nil];
+        [weakSelf dismissViewControllerAnimated:YES completion:weakSelf.dismissCompletionHandler];
     };
     [self.view addSubview:self.addView];
 }

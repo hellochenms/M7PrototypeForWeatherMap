@@ -34,6 +34,9 @@
             [city updateWeather];
             [[NSNotificationCenter defaultCenter] postNotificationName:kGlobal_NotificationName_AddCity object:nil];
         };
+        controller.dismissCompletionHandler = ^{
+            [weakSelf dismissViewControllerAnimated:YES completion:nil];
+        };
         [weakSelf presentViewController:controller animated:YES completion:nil];
     };
     [self.view addSubview:self.manageView];
