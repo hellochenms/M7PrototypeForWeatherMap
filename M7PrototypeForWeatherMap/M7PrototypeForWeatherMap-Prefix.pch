@@ -31,6 +31,7 @@ typedef void(^BOOLEventHandler)(BOOL);
 #define kGlobal_NotificationName_AddCity            @"kGlobal_NotificationName_AddCity"
 #define kGlobal_NotificationName_RemoveDirection    @"kGlobal_NotificationName_RemoveDirection"
 #define kGlobal_NotificationName_AddDirection       @"kGlobal_NotificationName_AddDirection"
+#define kGlobal_NotificationName_ChangeDefaultDirection       @"kGlobal_NotificationName_ChangeDefaultDirection"
 
 #pragma mark - 一般常量
 // 西安偏西南

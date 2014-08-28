@@ -13,7 +13,6 @@
 #import "CityAddSearchResultCell.h"
 #import "CitySearcher.h"
 #import "HotCitiesConfig.h"
-#import "City.h"
 
 //@interface AddLocationView()
 //@property (nonatomic) NaviBarView   *naviBarView;
@@ -33,6 +32,7 @@
 @property (nonatomic) UIControl             *coverView;
 @property (nonatomic) NSMutableDictionary   *existHotCityIndexes;
 @property (nonatomic) NSMutableDictionary   *existSearchCityIndexes;
+@property (nonatomic) ALVAddViewType        type;
 @end
 
 @implementation AddLocationView
@@ -56,16 +56,22 @@
 //    return self;
 //}
 
-- (id)initWithFrame:(CGRect)frame
-{
+- (id)initWithFrame:(CGRect)frame {
+    return [self initWithFrame:frame type:ALVAddViewTypeDisableUsedCity];
+}
+
+- (id)initWithFrame:(CGRect)frame type:(ALVAddViewType)type{
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        // Initialization code
+        _type = type;
+        
         _hotCities = [HotCitiesConfig sharedInstance].hotCities;
-        _existHotCityIndexes = [NSMutableDictionary dictionary];
-        [self filterItemsFromSrcArray:_hotCities toExistDictionary:_existHotCityIndexes];
-        _existSearchCityIndexes = [NSMutableDictionary dictionary];
+        if (_type == ALVAddViewTypeDisableUsedCity) {
+            _existHotCityIndexes = [NSMutableDictionary dictionary];
+            [self filterItemsFromSrcArray:_hotCities toExistDictionary:_existHotCityIndexes];
+            _existSearchCityIndexes = [NSMutableDictionary dictionary];
+        }
         
         self.backgroundColor = [UIColor colorWithRed:0xea/255.0 green:0xea/255.0 blue:0xea/255.0 alpha:1];
         
@@ -146,8 +152,9 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     CityAddCollectionViewCell *cell = (CityAddCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CAV_Cell_Identifier forIndexPath:indexPath];
     City *city = [self.hotCities objectAtIndex:indexPath.row];
+    BOOL isExists = (_type == ALVAddViewTypeDisableUsedCity ? ([self.existHotCityIndexes objectForKey:[NSString stringWithFormat:@"%d", indexPath.row]] != nil) : NO);
     [cell reloadData:city.name
-            isExists:([self.existHotCityIndexes objectForKey:[NSString stringWithFormat:@"%d", indexPath.row]] != nil)];
+            isExists:isExists];
     
     return cell;
 }
@@ -220,7 +227,7 @@
         cell = [[CityAddSearchResultCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     City *city = [self.searchResults objectAtIndex:indexPath.row];
-    BOOL isExists = ([self.existSearchCityIndexes objectForKey:[NSString stringWithFormat:@"%d", indexPath.row]] != nil);
+    BOOL isExists = (_type == ALVAddViewTypeDisableUsedCity ? [self.existSearchCityIndexes objectForKey:[NSString stringWithFormat:@"%d", indexPath.row]] != nil : NO);
     [cell reloadData:city.name isExists:isExists];
     
     return cell;
@@ -276,11 +283,8 @@
                                                   otherButtonTitles:nil];
         [alertView show];
     } else {
-        [[CityManager sharedInstance] addCity:city];
-        [city updateWeather];
-        [[NSNotificationCenter defaultCenter] postNotificationName:kGlobal_NotificationName_AddCity object:nil];
         if (self.addFinishHandler) {
-            self.addFinishHandler();
+            self.addFinishHandler(city);
         }
     }
 }

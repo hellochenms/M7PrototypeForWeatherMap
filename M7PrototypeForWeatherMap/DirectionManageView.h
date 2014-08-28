@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "City.h"
 
 @interface DirectionManageView : UIView
 @property (nonatomic, copy) VoidEventHandler tapBackButtonHandler;
+@property (nonatomic, copy) VoidEventHandler tapAddSrcCityButtonHandler;
+@property (nonatomic, copy) VoidEventHandler tapAddDestCityButtonHandler;
+- (void)setupSrcCity:(City *)srcCity;
+- (void)setupDestCity:(City *)destCity;
 @end

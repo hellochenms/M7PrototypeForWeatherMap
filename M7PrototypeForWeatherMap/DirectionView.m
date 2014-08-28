@@ -50,6 +50,16 @@
                                                  selector:@selector(onNotifyRemoveDirection)
                                                      name:kGlobal_NotificationName_RemoveDirection
                                                    object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(onNotifyAddDirection)
+                                                     name:kGlobal_NotificationName_AddDirection
+                                                   object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(onNotifyChangeDefaultDirection)
+                                                     name:kGlobal_NotificationName_ChangeDefaultDirection
+                                                   object:nil];
+        
+        
     }
     
     return self;
@@ -70,7 +80,7 @@
     if ([[CityManager sharedInstance].directions count] <= 0) {
         return;
     }
-    NSDictionary *directionSrcDest = [[CityManager sharedInstance].directions objectAtIndex:0];
+    NSDictionary *directionSrcDest = [CityManager sharedInstance].defaultDirection;
 
     City *srcCity = [directionSrcDest objectForKey:kCMDictKeySrcCity];
     [srcCity updateWeather];
@@ -178,6 +188,12 @@
 
 #pragma mark - 通知
 - (void)onNotifyRemoveDirection{
+    [self reloadData];
+}
+- (void)onNotifyAddDirection{
+    [self reloadData];
+}
+- (void)onNotifyChangeDefaultDirection{
     [self reloadData];
 }
 

@@ -7,8 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "City.h"
+
+typedef void (^ALVDidSelectCityHandler) (City *);
+
+typedef enum {
+    ALVAddViewTypeDisableUsedCity = 6000,
+    ALVAddViewTypeEnableAllCity,
+} ALVAddViewType;
 
 @interface AddLocationView : UIView
 @property (nonatomic, copy) VoidEventHandler tapBackButtonHandler;
-@property (nonatomic, copy) VoidEventHandler addFinishHandler;
+@property (nonatomic, copy) ALVDidSelectCityHandler addFinishHandler;
+- (id)initWithFrame:(CGRect)frame type:(ALVAddViewType)type;
 @end

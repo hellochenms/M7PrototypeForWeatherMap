@@ -9,6 +9,7 @@
 #import "LocationManageViewController.h"
 #import "LocationManageView.h"
 #import "AddLocationViewController.h"
+#import "CityManager.h"
 
 @interface LocationManageViewController()
 @property (nonatomic) LocationManageView *manageView;
@@ -28,6 +29,11 @@
     };
     self.manageView.tapAddButtonHandler = ^{
         AddLocationViewController *controller = [AddLocationViewController new];
+        controller.didSelectCityHandler = ^(City *city){
+            [[CityManager sharedInstance] addCity:city];
+            [city updateWeather];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kGlobal_NotificationName_AddCity object:nil];
+        };
         [weakSelf presentViewController:controller animated:YES completion:nil];
     };
     [self.view addSubview:self.manageView];

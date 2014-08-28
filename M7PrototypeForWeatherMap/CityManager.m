@@ -142,7 +142,19 @@ const static NSInteger kCMUpdateTimeThreshold = 3;
 
 #pragma mark - 路线
 - (void)addDirection:(NSDictionary *)direction{
-    
+    __block NSDictionary *targetDirection = nil;
+    [self.innerDirections enumerateObjectsUsingBlock:^(NSDictionary *aDirection, NSUInteger idx, BOOL *stop) {
+        if ([[direction objectForKey:kCMDictKeySrcCity] isEqual:[aDirection objectForKey:kCMDictKeySrcCity]]
+            && [[direction objectForKey:kCMDictKeyDestCity] isEqual:[aDirection objectForKey:kCMDictKeyDestCity]]) {
+            targetDirection = aDirection;
+            *stop = YES;
+        }
+    }];
+    if (targetDirection) {
+        [self.innerDirections removeObject:targetDirection];
+    }
+    [self.innerDirections insertObject:direction atIndex:0];
+    self.defaultDirection = direction;
 }
 - (void)removeDirection:(NSDictionary *)direction{
     __block NSDictionary *targetDirection = nil;
@@ -155,6 +167,14 @@ const static NSInteger kCMUpdateTimeThreshold = 3;
     }];
     if (targetDirection) {
         [self.innerDirections removeObject:targetDirection];
+    }
+    
+    if (targetDirection == self.defaultDirection) {
+        if ([self.innerDirections count] <= 0) {
+            self.defaultDirection = nil;
+        } else {
+            self.defaultDirection = [self.innerDirections objectAtIndex:0];
+        }
     }
 }
 
@@ -245,6 +265,7 @@ const static NSInteger kCMUpdateTimeThreshold = 3;
     [direction setObject:city forKey:kCMDictKeyDestCity];
     
     [self.innerDirections addObject:direction];
+    self.defaultDirection = direction;
 }
 
 

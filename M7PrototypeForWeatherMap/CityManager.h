@@ -19,6 +19,7 @@ FOUNDATION_EXTERN const NSString * const kCMDictKeyDestCity;
 @property (nonatomic, readonly) NSArray *cities;
 @property (nonatomic)           NSArray *tempAroundCities;
 @property (nonatomic, readonly) NSArray *directions;
+@property (nonatomic)           NSDictionary *defaultDirection;
 + (instancetype)sharedInstance;
 - (void)addCity:(City *)city;
 - (void)removeCity:(City *)city;

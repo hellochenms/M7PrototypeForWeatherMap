@@ -52,14 +52,14 @@
     
     _addSrcCityButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _addSrcCityButton.frame = CGRectMake(80, CGRectGetMaxY(_naviBarView.frame), 80, 44);
-    _addSrcCityButton.titleLabel.font = [UIFont systemFontOfSize:16];
+    _addSrcCityButton.titleLabel.font = [UIFont systemFontOfSize:12];
     [_addSrcCityButton setTitle:@"起点" forState:UIControlStateNormal];
     [_addSrcCityButton addTarget:self action:@selector(onTapAddSrcButton) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_addSrcCityButton];
     
     _addDestCityButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _addDestCityButton.frame = CGRectMake(80 * 2, CGRectGetMaxY(_naviBarView.frame), 80, 44);
-    _addDestCityButton.titleLabel.font = [UIFont systemFontOfSize:16];
+    _addDestCityButton.titleLabel.font = [UIFont systemFontOfSize:12];
     [_addDestCityButton setTitle:@"终点" forState:UIControlStateNormal];
     [_addDestCityButton addTarget:self action:@selector(onTapAddDestButton) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:_addDestCityButton];
@@ -80,19 +80,39 @@
     return self;
 }
 
+#pragma mark - public
+- (void)setupSrcCity:(City *)srcCity{
+    self.srcCity = srcCity;
+    [self.addSrcCityButton setTitle:[NSString stringWithFormat:@"起点：%@", self.srcCity.name] forState:UIControlStateNormal];
+}
+- (void)setupDestCity:(City *)destCity{
+    self.destCity = destCity;
+    [self.addDestCityButton setTitle:[NSString stringWithFormat:@"终点：%@", self.destCity.name] forState:UIControlStateNormal];
+}
+
 #pragma mark - event handler
 - (void)onTapAddSrcButton{
-    
+    if (self.tapAddSrcCityButtonHandler) {
+        self.tapAddSrcCityButtonHandler();
+    }
 }
 
 - (void)onTapAddDestButton{
-    
+    if (self.tapAddDestCityButtonHandler) {
+        self.tapAddDestCityButtonHandler();
+    }
 }
 
 - (void)onTapAddCityButton{
     if (!self.srcCity || !self.destCity) {
         return;
     }
+    NSMutableDictionary *dirction = [NSMutableDictionary dictionary];
+    [dirction setObject:self.srcCity forKey:kCMDictKeySrcCity];
+    [dirction setObject:self.destCity forKey:kCMDictKeyDestCity];
+    [[CityManager sharedInstance] addDirection:dirction];
+    [self.tableView reloadData];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kGlobal_NotificationName_AddDirection object:nil];
 }
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
@@ -116,6 +136,13 @@
     [[CityManager sharedInstance] removeDirection:[[CityManager sharedInstance].directions objectAtIndex:indexPath.row]];
     [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     [[NSNotificationCenter defaultCenter] postNotificationName:kGlobal_NotificationName_RemoveDirection object:nil];
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [CityManager sharedInstance].defaultDirection = [[CityManager sharedInstance].directions objectAtIndex:indexPath.row];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kGlobal_NotificationName_ChangeDefaultDirection object:nil];
+    if (self.tapBackButtonHandler) {
+        self.tapBackButtonHandler();
+    }
 }
 
 - (void)dealloc{
