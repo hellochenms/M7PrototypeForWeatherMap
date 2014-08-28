@@ -16,6 +16,7 @@ typedef enum {
     WACityTypeSrc,
     WACityTypeDest,
     WACityTypeDirectionPoint,
+    WACityTypeLocate,
 } WACityType;
 
 @interface WeatherAnnotation : NSObject<MKAnnotation>
@@ -24,4 +25,5 @@ typedef enum {
 @property (nonatomic)           BOOL        isAround;
 @property (nonatomic)           WACityType  cityType;
 - (id)initWithCoordinate:(CLLocationCoordinate2D)coordinate;
+- (void)setupCoordinate:(CLLocationCoordinate2D)coordinate;
 @end

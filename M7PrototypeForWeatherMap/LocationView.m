@@ -20,6 +20,8 @@
 @property (nonatomic) NSMutableArray    *annos;
 @property (nonatomic) NSMutableArray    *aroundAnnos;
 @property (nonatomic) City              *lastSelectedCity;
+@property (nonatomic) LocalCity         *localCity;
+@property (nonatomic) WeatherAnnotation *localAnno;
 @end
 
 @implementation LocationView
@@ -70,14 +72,31 @@
 - (void)reloadCities{
     [self.mapView removeAnnotations:self.annos];
     [self.annos removeAllObjects];
+    [self.localCity removeObserver:self forKeyPath:@"locateDate"];
+    self.localCity = nil;
+    
     WeatherAnnotation *anno = nil;
+    
     for (City *city in [CityManager sharedInstance].cities) {
         anno = [[WeatherAnnotation alloc] initWithCoordinate:CLLocationCoordinate2DMake(city.latitude, city.longitude)];
         anno.city = city;
-        anno.cityType = WACityTypeNormal;
+        if ([city isKindOfClass:[LocalCity class]]) {
+            anno.cityType = WACityTypeLocate;
+            self.localCity = (LocalCity *)city;
+            self.localAnno = anno;
+        } else {
+            anno.cityType = WACityTypeNormal;
+        }
         [self.annos addObject:anno];
     }
     [self.mapView addAnnotations:self.annos];
+    
+    if (self.localCity) {
+        [self.localCity addObserver:self
+                         forKeyPath:@"locateDate"
+                            options:NSKeyValueObservingOptionNew
+                            context:nil];
+    }
 }
 
 - (void)reloadAroundCities:(NSArray *)cities{
@@ -96,6 +115,15 @@
     }
     
     [CityManager sharedInstance].tempAroundCities = [cities copy];
+}
+
+#pragma mark - KVO
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
+    if ([keyPath isEqualToString:@"locateDate"]) {
+        [self.mapView removeAnnotation:self.localAnno];
+        self.localAnno.coordinate = CLLocationCoordinate2DMake(self.localAnno.city.latitude, self.localAnno.city.longitude);
+        [self.mapView addAnnotation:self.localAnno];
+    }
 }
 
 #pragma mark - MKMapViewDelegate
@@ -171,6 +199,7 @@
 #pragma mark - dealloc
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self.localCity removeObserver:self forKeyPath:@"locateDate"];
 }
 
 

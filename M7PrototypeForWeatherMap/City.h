@@ -20,3 +20,7 @@
 @property (nonatomic)       NSArray     *aroundCities;
 - (void)updateWeather;
 @end
+
+@interface LocalCity : City
+@property (nonatomic)       NSDate      *locateDate;
+@end

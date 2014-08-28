@@ -23,6 +23,11 @@
     return self;
 }
 
+#pragma mark - public
+- (void)setupCoordinate:(CLLocationCoordinate2D)coordinate{
+    _coordinate = coordinate;
+}
+
 #pragma mark - description
 - (NSString *)description{
     return [NSString stringWithFormat:@"城市名(%@) 纬度(%.6f) 经度(%.6f)", self.city.name, self.coordinate.latitude, self.coordinate.longitude];

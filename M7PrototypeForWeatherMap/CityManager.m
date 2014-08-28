@@ -180,6 +180,9 @@ const static NSInteger kCMUpdateTimeThreshold = 3;
 
 #pragma - _temp
 - (void)_tempLoadDefaultCities{
+    LocalCity *localCity = [LocalCity new];
+    [self.innerCities addObject:localCity];
+    
     // 北京
     City *city = [City new];
     NSMutableArray *aroundCities = [NSMutableArray array];

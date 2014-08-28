@@ -11,6 +11,7 @@
 
 @interface LocationManageCell ()
 @property (nonatomic) UILabel *nameLabel;
+@property (nonatomic) City  *city;
 @end
 
 @implementation LocationManageCell
@@ -30,7 +31,25 @@
 
 #pragma mark -
 - (void)reloadData:(City *)city{
+    [self.city removeObserver:self forKeyPath:@"name"];
+    self.city = city;
+    [self.city addObserver:self
+                forKeyPath:@"name"
+                   options:NSKeyValueObservingOptionNew
+                   context:nil];
     self.nameLabel.text = city.name;
+}
+
+#pragma mark - KVO
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
+    if ([keyPath isEqualToString:@"name"]) {
+        self.nameLabel.text = self.city.name;
+    }
+}
+
+#pragma mark - dealloc
+- (void)dealloc{
+    [self.city removeObserver:self forKeyPath:@"name"];
 }
     
 @end

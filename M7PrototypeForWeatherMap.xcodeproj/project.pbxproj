@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9935C83F19AED5FF0030043C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99BAD17E19AC2ED200A0EB82 /* CoreLocation.framework */; };
 		994B068919ADB57700B5DF34 /* LocationManageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 994B068819ADB57700B5DF34 /* LocationManageViewController.m */; };
 		994B068C19ADB58700B5DF34 /* DirectionManageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 994B068B19ADB58700B5DF34 /* DirectionManageViewController.m */; };
 		994B068F19ADB8B500B5DF34 /* LocationManageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 994B068E19ADB8B500B5DF34 /* LocationManageView.m */; };
@@ -128,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9935C83F19AED5FF0030043C /* CoreLocation.framework in Frameworks */,
 				99BCD1E919AB0CEF005D79EB /* CoreGraphics.framework in Frameworks */,
 				99BCD1EB19AB0CEF005D79EB /* UIKit.framework in Frameworks */,
 				99BAD17D19AC2EC000A0EB82 /* MapKit.framework in Frameworks */,

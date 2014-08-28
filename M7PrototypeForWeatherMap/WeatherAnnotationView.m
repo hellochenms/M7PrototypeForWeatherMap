@@ -41,9 +41,14 @@
 #pragma mark - reload Data
 - (void)reloadData:(City *)city cityType:(WACityType)cityType{
     [self.city removeObserver:self forKeyPath:@"updateDate"];
+    [self.city removeObserver:self forKeyPath:@"name"];
     self.city = city;
     [self.city addObserver:self
                 forKeyPath:@"updateDate"
+                   options:NSKeyValueObservingOptionNew
+                   context:nil];
+    [self.city addObserver:self
+                forKeyPath:@"name"
                    options:NSKeyValueObservingOptionNew
                    context:nil];
     [self refreshUI];
@@ -59,6 +64,8 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
     if ([keyPath isEqualToString:@"updateDate"]) {
         [self refreshUI];
+    } else if ([keyPath isEqualToString:@"name"]) {
+        self.nameLabel.text = self.city.name;
     }
 }
 
@@ -92,6 +99,11 @@
             nameColor = [UIColor brownColor];
             break;
         }
+        case WACityTypeLocate:{
+            temperatureColor = [UIColor yellowColor];
+            nameColor = [UIColor greenColor];
+            break;
+        }
         default:
             break;
     }
@@ -103,6 +115,7 @@
 #pragma mark - dealloc
 - (void)dealloc{
     [self.city removeObserver:self forKeyPath:@"updateDate"];
+    [self.city removeObserver:self forKeyPath:@"name"];
 }
 
 @end
