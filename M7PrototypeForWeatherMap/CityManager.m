@@ -135,9 +135,17 @@ const static NSInteger kCMUpdateTimeThreshold = 3;
         }
     }];
     [self.innerCities addObject:city];
+    self.defaultCity = city;
 }
 - (void)removeCity:(City *)city{
     [self.innerCities removeObject:city];
+    if (city == self.defaultCity) {
+        if ([self.innerCities count] <= 0) {
+            self.defaultCity = nil;
+        } else {
+            self.defaultCity = [self.innerCities firstObject];
+        }
+    }
 }
 
 #pragma mark - 路线
@@ -173,7 +181,7 @@ const static NSInteger kCMUpdateTimeThreshold = 3;
         if ([self.innerDirections count] <= 0) {
             self.defaultDirection = nil;
         } else {
-            self.defaultDirection = [self.innerDirections objectAtIndex:0];
+            self.defaultDirection = [self.innerDirections firstObject];
         }
     }
 }
@@ -246,6 +254,8 @@ const static NSInteger kCMUpdateTimeThreshold = 3;
     
     city.aroundCities = [aroundCities copy];
     [self.innerCities addObject:city];
+    
+    self.defaultCity = localCity;
 }
 
 - (void)_tempLoadDefaultDirections{

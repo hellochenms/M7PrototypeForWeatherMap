@@ -153,6 +153,10 @@
         }
         City *city = ((WeatherAnnotation *)view.annotation).city;
         [self showDetailViewWithCity:city isAround:anno.isAround];
+        
+        if (!anno.isAround) {
+            [CityManager sharedInstance].defaultCity = anno.city;
+        }
     }
 }
 

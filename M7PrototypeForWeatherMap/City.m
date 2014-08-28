@@ -48,6 +48,9 @@
         _locationManager = [CLLocationManager new];
         _locationManager.distanceFilter = 500;
         _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        
+        [self reset];
+        
         [self startLocate];
         
         [[NSNotificationCenter defaultCenter] addObserver:self
@@ -62,9 +65,19 @@
 - (void)startLocate{
     if (!self.isLocating && [CLLocationManager locationServicesEnabled]) {
         self.isLocating = YES;
+        [self reset];
+        
         self.locationManager.delegate = self;
         [self.locationManager startUpdatingLocation];
     }
+}
+
+- (void)reset{
+    self.latitude = 90 + 1;
+    self.longitude = 180 + 1;
+    self.timeZone = [NSTimeZone systemTimeZone];
+    self.name = @"自动定位";
+    self.address = @"自动定位";
 }
 
 #pragma mark - CLLocationManagerDelegate
@@ -77,11 +90,7 @@
     self.locationManager.delegate = nil;
     [self.locationManager stopUpdatingLocation];
     CLLocation *location = [locations lastObject];
-    self.latitude = 90 + 1;
-    self.longitude = 180 + 1;
-    self.timeZone = [NSTimeZone systemTimeZone];
-    self.name = @"自动定位";
-    self.address = @"自动定位";
+
    
     [self.geocoder reverseGeocodeLocation:location
                         completionHandler:^(NSArray *placemarks, NSError *error) {

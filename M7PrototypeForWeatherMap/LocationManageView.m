@@ -86,6 +86,13 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:kGlobal_NotificationName_RemoveCity object:nil];
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [CityManager sharedInstance].defaultCity = [[CityManager sharedInstance].cities objectAtIndex:indexPath.row];
+    if (self.tapBackButtonHandler) {
+        self.tapBackButtonHandler();
+    }
+}
+
 #pragma mark - 
 - (void)onTapAddButton{
     if (self.tapAddButtonHandler) {
