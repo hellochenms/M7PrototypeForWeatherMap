@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9935C83F19AED5FF0030043C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99BAD17E19AC2ED200A0EB82 /* CoreLocation.framework */; };
+		9935C84419B025750030043C /* gps2gmap.data in Resources */ = {isa = PBXBuildFile; fileRef = 9935C84319B025750030043C /* gps2gmap.data */; };
 		994B068919ADB57700B5DF34 /* LocationManageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 994B068819ADB57700B5DF34 /* LocationManageViewController.m */; };
 		994B068C19ADB58700B5DF34 /* DirectionManageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 994B068B19ADB58700B5DF34 /* DirectionManageViewController.m */; };
 		994B068F19ADB8B500B5DF34 /* LocationManageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 994B068E19ADB8B500B5DF34 /* LocationManageView.m */; };
@@ -58,6 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9935C84319B025750030043C /* gps2gmap.data */ = {isa = PBXFileReference; lastKnownFileType = file; path = gps2gmap.data; sourceTree = "<group>"; };
 		994B068719ADB57700B5DF34 /* LocationManageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManageViewController.h; sourceTree = "<group>"; };
 		994B068819ADB57700B5DF34 /* LocationManageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManageViewController.m; sourceTree = "<group>"; };
 		994B068A19ADB58700B5DF34 /* DirectionManageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectionManageViewController.h; sourceTree = "<group>"; };
@@ -150,6 +152,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9935C84119B021950030043C /* files */ = {
+			isa = PBXGroup;
+			children = (
+				9935C84319B025750030043C /* gps2gmap.data */,
+			);
+			path = files;
+			sourceTree = "<group>";
+		};
 		994B068419ADB50E00B5DF34 /* 1.2.LocationManage */ = {
 			isa = PBXGroup;
 			children = (
@@ -352,6 +362,7 @@
 		99BCD21519AB0D78005D79EB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9935C84119B021950030043C /* files */,
 				99BCD21619AB0D9E005D79EB /* images */,
 			);
 			path = Resources;
@@ -447,6 +458,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				994B06A119ADD1F700B5DF34 /* cities.json in Resources */,
+				9935C84419B025750030043C /* gps2gmap.data in Resources */,
 				994B06AD19ADD9D700B5DF34 /* hotcitiesConfigure.json in Resources */,
 				99BCD1F119AB0CEF005D79EB /* InfoPlist.strings in Resources */,
 				99BCD1F919AB0CEF005D79EB /* Images.xcassets in Resources */,

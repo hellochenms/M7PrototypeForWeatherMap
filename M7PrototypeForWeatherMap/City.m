@@ -91,15 +91,20 @@
     [self.locationManager stopUpdatingLocation];
     CLLocation *location = [locations lastObject];
 
-   
     [self.geocoder reverseGeocodeLocation:location
                         completionHandler:^(NSArray *placemarks, NSError *error) {
                             if (error) {
                                 NSLog(@"locate error(%@)  %s", error, __func__);
                                 self.isLocating = NO;
                             } else {
-                                self.latitude = location.coordinate.latitude;
-                                self.longitude = location.coordinate.longitude;
+                                CLLocationCoordinate2D coordinate = location.coordinate;
+//                                // TODO:chenms:修正坐标
+//                                NSLog(@"修正前：%.6f, %.6f  %s", location.coordinate.latitude, location.coordinate.longitude, __func__);
+//                                CLLocationCoordinate2D coordinate = [self correctGpsLocation:CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)];
+//                                NSLog(@"修正后：%.6f, %.6f  %s", coordinate.latitude, coordinate.longitude, __func__);
+                                
+                                self.latitude = coordinate.latitude;
+                                self.longitude = coordinate.longitude;
                                 CLPlacemark * placemark = placemarks.firstObject;
                                 self.name = placemark.subLocality;
                                 
@@ -132,6 +137,45 @@
 #pragma mark - 通知
 - (void)onNotifyApplicationDidBecomeActive{
     [self startLocate];
+}
+
+#pragma mark - tools
+// private GPS定位修正为火星坐标
+- (CLLocationCoordinate2D)correctGpsLocation:(CLLocationCoordinate2D)location{
+    
+    NSString* latText = [NSString stringWithFormat:@"%.1f",location.latitude];
+    NSString* lngText = [NSString stringWithFormat:@"%.1f",location.longitude];
+    NSInteger latIndex = floorf([latText floatValue] * 10.0);
+    NSInteger lngIndex = floorf([lngText floatValue] * 10.0);
+    
+    float offset_latitude,offset_longitude;
+    offset_latitude = offset_longitude = 0.0;
+    
+    
+    if(latIndex >= 182 && latIndex <= 535 && lngIndex >= 736 && lngIndex <= 1347)
+        
+    {
+        
+        NSInteger location = (latIndex - 182)*(lngIndex - 736) * 8;
+        
+        NSFileHandle* fileHandle = [NSFileHandle fileHandleForReadingAtPath:[[NSBundle mainBundle] pathForResource:@"gps2gmap" ofType:@"data"]];
+        
+        [fileHandle seekToFileOffset:location];
+        
+        NSData* oData = [fileHandle readDataOfLength:sizeof(float)*2];
+        
+        [fileHandle closeFile];
+        
+        
+        [oData getBytes:&offset_latitude range:NSMakeRange(0, 4)];
+        
+        [oData getBytes:&offset_longitude range:NSMakeRange(4, 4)];
+        
+    }
+    
+    CLLocationCoordinate2D locationAfterCorrect = CLLocationCoordinate2DMake(location.latitude + offset_latitude, location.longitude + offset_longitude);
+    
+    return locationAfterCorrect;
 }
 
 #pragma mark - dealloc
