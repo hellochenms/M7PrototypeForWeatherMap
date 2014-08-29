@@ -21,6 +21,7 @@
 @property (nonatomic) WeatherAnnotation *destAnno;
 @property (nonatomic) NSMutableArray    *directionAnnos;
 @property (nonatomic) MKPolyline        *line;
+@property (nonatomic) WeatherAnnotation *lastSelectedAnno;
 @end
 
 @implementation DirectionView
@@ -148,6 +149,8 @@
         WeatherAnnotation *anno = (WeatherAnnotation *)view.annotation;
         City *city = ((WeatherAnnotation *)view.annotation).city;
         [self showDetailViewWithCity:city isAround:anno.isAround];
+        
+        self.lastSelectedAnno = view.annotation;
     }
 }
 #warning TODO: DEPRECATED
@@ -182,7 +185,8 @@
                          weakSelf.detailView.frame = detailFrame;
                      } completion:^(BOOL finished) {
                          [weakSelf.detailView clearData];
-                         [self.mapView selectAnnotation:nil animated:NO];
+                         [self.mapView deselectAnnotation:self.lastSelectedAnno animated:YES];
+                         self.lastSelectedAnno = nil;
                      }];
 }
 

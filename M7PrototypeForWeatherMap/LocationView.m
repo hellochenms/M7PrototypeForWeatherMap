@@ -22,6 +22,7 @@
 @property (nonatomic) City              *lastSelectedCity;
 @property (nonatomic) LocalCity         *localCity;
 @property (nonatomic) WeatherAnnotation *localAnno;
+@property (nonatomic) WeatherAnnotation *lastSelectedAnno;
 @end
 
 @implementation LocationView
@@ -157,6 +158,8 @@
         if (!anno.isAround) {
             [CityManager sharedInstance].defaultCity = anno.city;
         }
+        
+        self.lastSelectedAnno = view.annotation;
     }
 }
 
@@ -183,7 +186,8 @@
                      } completion:^(BOOL finished) {
                          // TODO:chenms:!
 //                         [weakSelf.detailView clearData];
-                         [self.mapView selectAnnotation:nil animated:NO];
+                         [self.mapView deselectAnnotation:self.lastSelectedAnno animated:YES];
+                         self.lastSelectedAnno = nil;
                      }];
 }
 
