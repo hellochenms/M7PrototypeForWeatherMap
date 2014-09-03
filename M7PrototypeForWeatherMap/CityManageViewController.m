@@ -6,29 +6,29 @@
 //  Copyright (c) 2014年 chenms.m2. All rights reserved.
 //
 
-#import "LocationManageViewController.h"
-#import "LocationManageView.h"
-#import "AddLocationViewController.h"
+#import "CityManageViewController.h"
+#import "CityManageView.h"
+#import "AddCityViewController.h"
 #import "CityManager.h"
 
-@interface LocationManageViewController()
-@property (nonatomic) LocationManageView *manageView;
+@interface CityManageViewController()
+@property (nonatomic) CityManageView *manageView;
 @end
 
-@implementation LocationManageViewController
+@implementation CityManageViewController
 
 - (void)viewDidLoad{
     [super viewDidLoad];
     
     CGRect frame = [UIScreen mainScreen].bounds;
     frame.size.height -= (isIOS7 ? 0 : 20);
-    self.manageView = [[LocationManageView alloc] initWithFrame:frame];
+    self.manageView = [[CityManageView alloc] initWithFrame:frame];
     __weak typeof(self) weakSelf = self;
     self.manageView.tapBackButtonHandler = ^{
         [weakSelf dismissViewControllerAnimated:YES completion:nil];
     };
     self.manageView.tapAddButtonHandler = ^{
-        AddLocationViewController *controller = [AddLocationViewController new];
+        AddCityViewController *controller = [AddCityViewController new];
         controller.didSelectCityHandler = ^(City *city){
             [[CityManager sharedInstance] addCity:city];
             [city updateWeather];

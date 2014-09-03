@@ -6,13 +6,13 @@
 //  Copyright (c) 2014年 chenms.m2. All rights reserved.
 //
 
-#import "CityAddCollectionViewCell.h"
+#import "AddCityHotCityCell.h"
 
-@interface CityAddCollectionViewCell()
+@interface AddCityHotCityCell()
 @property (nonatomic) UIButton *cityButton;
 @end
 
-@implementation CityAddCollectionViewCell
+@implementation AddCityHotCityCell
 
 - (id)initWithFrame:(CGRect)frame
 {

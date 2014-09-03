@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LocationManageView : UIView
+@interface CityManageView : UIView
 @property (nonatomic, copy) VoidEventHandler tapBackButtonHandler;
 @property (nonatomic, copy) VoidEventHandler tapAddButtonHandler;
 @end

@@ -6,15 +6,15 @@
 //  Copyright (c) 2014年 chenms.m2. All rights reserved.
 //
 
-#import "LocationManageCell.h"
+#import "CityManageCell.h"
 #import "City.h"
 
-@interface LocationManageCell ()
+@interface CityManageCell ()
 @property (nonatomic) UILabel *nameLabel;
 @property (nonatomic) City  *city;
 @end
 
-@implementation LocationManageCell
+@implementation CityManageCell
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {

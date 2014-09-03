@@ -8,14 +8,15 @@
 
 #import "RootView.h"
 #import "NaviBarView.h"
-#import "LocationView.h"
+#import "CityView.h"
 #import "DirectionView.h"
 #import "CityManager.h"
+#import "DirectionManager.h"
 #import "City.h"
 
 @interface RootView()
 @property (nonatomic) NaviBarView   *naviBarView;
-@property (nonatomic) LocationView  *locationView;
+@property (nonatomic) CityView  *locationView;
 @property (nonatomic) DirectionView *directionView;
 @property (nonatomic) BOOL          isShowingDirectionView;
 @property (nonatomic) City          *defaultCity;
@@ -58,7 +59,7 @@
     _directionView = [[DirectionView alloc] initWithFrame:contentAreaFrame];
     [self addSubview:_directionView];
     
-    _locationView = [[LocationView alloc] initWithFrame:contentAreaFrame];
+    _locationView = [[CityView alloc] initWithFrame:contentAreaFrame];
     [self addSubview:_locationView];
     
     [[CityManager sharedInstance] addObserver:self
@@ -101,8 +102,8 @@
 
 - (NSString *)defaultDirectionName{
     NSString *directionName = @"暂无";
-    if ([CityManager sharedInstance].defaultDirection) {
-        directionName = [NSString stringWithFormat:@"%@到%@", ((City *)[[CityManager sharedInstance].defaultDirection objectForKey:kCMDictKeySrcCity]).name, ((City *)[[CityManager sharedInstance].defaultDirection objectForKey:kCMDictKeyDestCity]).name];
+    if ([DirectionManager sharedInstance].defaultDirection) {
+        directionName = [NSString stringWithFormat:@"%@到%@", ((City *)[[DirectionManager sharedInstance].defaultDirection objectForKey:kDMDictKeySrcCity]).name, ((City *)[[DirectionManager sharedInstance].defaultDirection objectForKey:kDMDictKeyDestCity]).name];
     }
     return directionName;
 }

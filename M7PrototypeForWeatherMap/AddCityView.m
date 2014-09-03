@@ -6,11 +6,11 @@
 //  Copyright (c) 2014年 chenms.m2. All rights reserved.
 //
 
-#import "AddLocationView.h"
+#import "AddCityView.h"
 #import "NaviBarView.h"
-#import "CityAddCollectionViewCell.h"
+#import "AddCityHotCityCell.h"
 #import "CityManager.h"
-#import "CityAddSearchResultCell.h"
+#import "AddCitySearchResultCell.h"
 #import "CitySearcher.h"
 #import "HotCitiesConfig.h"
 
@@ -20,7 +20,7 @@
 
 #define CAV_Cell_Identifier @"collectionCell"
 
-@interface AddLocationView()<UICollectionViewDataSource, UICollectionViewDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
+@interface AddCityView()<UICollectionViewDataSource, UICollectionViewDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 @property (nonatomic) UIView                *naviView;
 @property (nonatomic) UIImageView           *searchIconImageView;
 @property (nonatomic) UITextField           *searchTextFiled;
@@ -35,7 +35,7 @@
 @property (nonatomic) ALVAddViewType        type;
 @end
 
-@implementation AddLocationView
+@implementation AddCityView
 //- (id)initWithFrame:(CGRect)frame{
 //    self = [super initWithFrame:frame];
 //    if (self) {
@@ -120,7 +120,7 @@
         layout.minimumInteritemSpacing = 5;
         _hotCitiesCollectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 44, 320, CGRectGetHeight(contentView.bounds) - 44) collectionViewLayout:layout];
         _hotCitiesCollectionView.backgroundColor = [UIColor clearColor];
-        [_hotCitiesCollectionView registerClass:[CityAddCollectionViewCell class] forCellWithReuseIdentifier:CAV_Cell_Identifier];
+        [_hotCitiesCollectionView registerClass:[AddCityHotCityCell class] forCellWithReuseIdentifier:CAV_Cell_Identifier];
         _hotCitiesCollectionView.dataSource = self;
         _hotCitiesCollectionView.delegate = self;
         [contentView addSubview:_hotCitiesCollectionView];
@@ -150,7 +150,7 @@
     return [self.hotCities count];
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    CityAddCollectionViewCell *cell = (CityAddCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CAV_Cell_Identifier forIndexPath:indexPath];
+    AddCityHotCityCell *cell = (AddCityHotCityCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CAV_Cell_Identifier forIndexPath:indexPath];
     City *city = [self.hotCities objectAtIndex:indexPath.row];
     BOOL isExists = (_type == ALVAddViewTypeDisableUsedCity ? ([self.existHotCityIndexes objectForKey:[NSString stringWithFormat:@"%d", indexPath.row]] != nil) : NO);
     [cell reloadData:city.name
@@ -222,9 +222,9 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *cellIdentifier = @"cell";
-    CityAddSearchResultCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    AddCitySearchResultCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
-        cell = [[CityAddSearchResultCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[AddCitySearchResultCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     City *city = [self.searchResults objectAtIndex:indexPath.row];
     BOOL isExists = (_type == ALVAddViewTypeDisableUsedCity ? [self.existSearchCityIndexes objectForKey:[NSString stringWithFormat:@"%d", indexPath.row]] != nil : NO);

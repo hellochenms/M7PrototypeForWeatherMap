@@ -9,7 +9,7 @@
 #import "DirectionManageView.h"
 #import "NaviBarView.h"
 #import "DirectionManageCell.h"
-#import "CityManager.h"
+#import "DirectionManager.h"
 
 @interface DirectionManageView()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic) NaviBarView   *naviBarView;
@@ -100,9 +100,9 @@
         return;
     }
     NSMutableDictionary *dirction = [NSMutableDictionary dictionary];
-    [dirction setObject:self.srcCity forKey:kCMDictKeySrcCity];
-    [dirction setObject:self.destCity forKey:kCMDictKeyDestCity];
-    [[CityManager sharedInstance] addDirection:dirction];
+    [dirction setObject:self.srcCity forKey:kDMDictKeySrcCity];
+    [dirction setObject:self.destCity forKey:kDMDictKeyDestCity];
+    [[DirectionManager sharedInstance] addDirection:dirction];
     [self.tableView reloadData];
     [[NSNotificationCenter defaultCenter] postNotificationName:kGlobal_NotificationName_AddDirection object:nil];
     if (self.tapAddDirectionButtonHandler) {
@@ -112,7 +112,7 @@
 
 #pragma mark - UITableViewDataSource, UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [[CityManager sharedInstance].directions count];
+    return [[DirectionManager sharedInstance].directions count];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *cellIdentifier = @"cellIdentifier";
@@ -120,7 +120,7 @@
     if (!cell) {
         cell = [[DirectionManageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    [cell reloadData:[[CityManager sharedInstance].directions objectAtIndex:indexPath.row]];
+    [cell reloadData:[[DirectionManager sharedInstance].directions objectAtIndex:indexPath.row]];
     
     return cell;
 }
@@ -128,12 +128,12 @@
     return @"删除";
 }
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
-    [[CityManager sharedInstance] removeDirection:[[CityManager sharedInstance].directions objectAtIndex:indexPath.row]];
+    [[DirectionManager sharedInstance] removeDirection:[[DirectionManager sharedInstance].directions objectAtIndex:indexPath.row]];
     [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     [[NSNotificationCenter defaultCenter] postNotificationName:kGlobal_NotificationName_RemoveDirection object:nil];
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [CityManager sharedInstance].defaultDirection = [[CityManager sharedInstance].directions objectAtIndex:indexPath.row];
+    [DirectionManager sharedInstance].defaultDirection = [[DirectionManager sharedInstance].directions objectAtIndex:indexPath.row];
     [[NSNotificationCenter defaultCenter] postNotificationName:kGlobal_NotificationName_ChangeDefaultDirection object:nil];
     if (self.tapBackButtonHandler) {
         self.tapBackButtonHandler();

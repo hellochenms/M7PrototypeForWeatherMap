@@ -6,16 +6,16 @@
 //  Copyright (c) 2014年 chenms.m2. All rights reserved.
 //
 
-#import "AddLocationViewController.h"
-#import "AddLocationView.h"
+#import "AddCityViewController.h"
+#import "AddCityView.h"
 #import "CityManager.h"
 
-@interface AddLocationViewController ()
-@property (nonatomic) AddLocationView   *addView;
+@interface AddCityViewController ()
+@property (nonatomic) AddCityView   *addView;
 @property (nonatomic) ALVAddViewType    type;
 @end
 
-@implementation AddLocationViewController
+@implementation AddCityViewController
 
 - (id)init{
     return [self initWithType:ALVAddViewTypeDisableUsedCity];
@@ -35,7 +35,7 @@
     
     CGRect frame = [UIScreen mainScreen].bounds;
     frame.size.height -= (isIOS7 ? 0 : 20);
-    self.addView = [[AddLocationView alloc] initWithFrame:frame type:self.type];
+    self.addView = [[AddCityView alloc] initWithFrame:frame type:self.type];
     __weak typeof(self) weakSelf = self;
     self.addView.tapBackButtonHandler = ^{
         [weakSelf dismissViewControllerAnimated:YES completion:nil];

@@ -8,7 +8,7 @@
 
 #import "RootViewController.h"
 #import "RootView.h"
-#import "LocationManageViewController.h"
+#import "CityManageViewController.h"
 #import "DirectionManageViewController.h"
 
 @interface RootViewController()
@@ -28,7 +28,7 @@
     RootView *rootView = [[RootView alloc] initWithFrame:frame];
     rootView.tapTitleButtonHandler = ^(BOOL isShowingDirectionView){
         if (!isShowingDirectionView) {
-            LocationManageViewController *controller = [LocationManageViewController new];
+            CityManageViewController *controller = [CityManageViewController new];
             [self presentViewController:controller animated:YES completion:nil];
         } else {
             DirectionManageViewController *controller = [DirectionManageViewController new];

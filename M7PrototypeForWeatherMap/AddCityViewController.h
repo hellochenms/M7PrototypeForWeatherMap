@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AddLocationView.h"
+#import "AddCityView.h"
 
-@interface AddLocationViewController : UIViewController
+@interface AddCityViewController : UIViewController
 @property (nonatomic, copy) ALVDidSelectCityHandler didSelectCityHandler;
 @property (nonatomic, copy) VoidEventHandler dismissCompletionHandler;
 - (id)initWithType:(ALVAddViewType)type;

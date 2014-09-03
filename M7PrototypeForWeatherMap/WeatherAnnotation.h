@@ -20,7 +20,7 @@ typedef enum {
 } WACityType;
 
 @interface WeatherAnnotation : NSObject<MKAnnotation>
-@property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
+@property (nonatomic) CLLocationCoordinate2D coordinate;
 @property (nonatomic)           City        *city;
 @property (nonatomic)           BOOL        isAround;
 @property (nonatomic)           WACityType  cityType;

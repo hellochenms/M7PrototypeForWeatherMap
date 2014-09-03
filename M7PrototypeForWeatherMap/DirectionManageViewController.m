@@ -8,7 +8,7 @@
 
 #import "DirectionManageViewController.h"
 #import "DirectionManageView.h"
-#import "AddLocationViewController.h"
+#import "AddCityViewController.h"
 
 @interface DirectionManageViewController()
 @property (nonatomic) DirectionManageView *manageView;
@@ -27,14 +27,14 @@
         [weakSelf dismissViewControllerAnimated:YES completion:nil];
     };
     self.manageView.tapAddSrcCityButtonHandler = ^{
-        AddLocationViewController *controller = [[AddLocationViewController alloc] initWithType:ALVAddViewTypeEnableAllCity];
+        AddCityViewController *controller = [[AddCityViewController alloc] initWithType:ALVAddViewTypeEnableAllCity];
         controller.didSelectCityHandler = ^(City *city){
             [weakSelf.manageView setupSrcCity:city];
         };
         [weakSelf presentViewController:controller animated:YES completion:nil];
     };
     self.manageView.tapAddDestCityButtonHandler = ^{
-        AddLocationViewController *controller = [[AddLocationViewController alloc] initWithType:ALVAddViewTypeEnableAllCity];
+        AddCityViewController *controller = [[AddCityViewController alloc] initWithType:ALVAddViewTypeEnableAllCity];
         controller.didSelectCityHandler = ^(City *city){
             [weakSelf.manageView setupDestCity:city];
         };

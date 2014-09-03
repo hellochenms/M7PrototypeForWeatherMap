@@ -9,7 +9,6 @@
 #import "WeatherAnnotation.h"
 
 @interface WeatherAnnotation()
-@property (nonatomic) CLLocationCoordinate2D coordinate;
 @end
 
 @implementation WeatherAnnotation

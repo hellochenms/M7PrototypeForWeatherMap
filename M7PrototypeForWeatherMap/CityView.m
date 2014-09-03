@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 chenms.m2. All rights reserved.
 //
 
-#import "LocationView.h"
+#import "CityView.h"
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "CityManager.h"
@@ -14,7 +14,7 @@
 #import "WeatherAnnotationView.h"
 #import "DetailInfoView.h"
 
-@interface LocationView()<MKMapViewDelegate>
+@interface CityView()<MKMapViewDelegate>
 @property (nonatomic) MKMapView         *mapView;
 @property (nonatomic) DetailInfoView    *detailView;
 @property (nonatomic) NSMutableArray    *annos;
@@ -25,7 +25,7 @@
 @property (nonatomic) WeatherAnnotation *lastSelectedAnno;
 @end
 
-@implementation LocationView
+@implementation CityView
 - (id)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {

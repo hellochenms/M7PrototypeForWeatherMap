@@ -9,7 +9,7 @@
 #import "DirectionView.h"
 #import <MapKit/MapKit.h>
 #import "DetailInfoView.h"
-#import "CityManager.h"
+#import "DirectionManager.h"
 #import "WeatherAnnotation.h"
 #import "WeatherAnnotationView.h"
 
@@ -78,18 +78,18 @@
     self.line = nil;
     
 #warning TODO:chenms:测试逻辑
-    if ([[CityManager sharedInstance].directions count] <= 0) {
+    if ([[DirectionManager sharedInstance].directions count] <= 0) {
         return;
     }
-    NSDictionary *directionSrcDest = [CityManager sharedInstance].defaultDirection;
+    NSDictionary *directionSrcDest = [DirectionManager sharedInstance].defaultDirection;
 
-    City *srcCity = [directionSrcDest objectForKey:kCMDictKeySrcCity];
+    City *srcCity = [directionSrcDest objectForKey:kDMDictKeySrcCity];
     [srcCity updateWeather];
     self.srcAnno = [[WeatherAnnotation alloc] initWithCoordinate:CLLocationCoordinate2DMake(srcCity.latitude, srcCity.longitude)];
     self.srcAnno.city = srcCity;
     self.srcAnno.cityType = WACityTypeSrc;
     [self.mapView addAnnotation:self.srcAnno];
-    City *destCity = [directionSrcDest objectForKey:kCMDictKeyDestCity];
+    City *destCity = [directionSrcDest objectForKey:kDMDictKeyDestCity];
     [destCity updateWeather];
     self.destAnno = [[WeatherAnnotation alloc] initWithCoordinate:CLLocationCoordinate2DMake(destCity.latitude, destCity.longitude)];
     self.destAnno.city = destCity;
@@ -97,7 +97,7 @@
     [self.mapView addAnnotation:self.destAnno];
     
     __weak typeof(self) weakSelf = self;
-    [[CityManager sharedInstance] requestDirectionWithSrcCity:srcCity
+    [[DirectionManager sharedInstance] requestDirectionWithSrcCity:srcCity
                                                      destCity:destCity
                                             completionHandler:^(NSArray *directionCities) {
                                                 [weakSelf reloadDirection:directionCities];

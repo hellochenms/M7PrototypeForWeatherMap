@@ -6,18 +6,18 @@
 //  Copyright (c) 2014年 chenms.m2. All rights reserved.
 //
 
-#import "LocationManageView.h"
+#import "CityManageView.h"
 #import "NaviBarView.h"
 #import "CityManager.h"
-#import "LocationManageCell.h"
+#import "CityManageCell.h"
 
-@interface LocationManageView()<UITableViewDataSource, UITableViewDelegate>
+@interface CityManageView()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic) NaviBarView   *naviBarView;
 @property (nonatomic) UIButton      *addButton;
 @property (nonatomic) UITableView   *tableView;
 @end
 
-@implementation LocationManageView
+@implementation CityManageView
 
 - (id)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
@@ -69,9 +69,9 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *cellIdentifier = @"cellIdentifier";
-    LocationManageCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    CityManageCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
-        cell = [[LocationManageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[CityManageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     [cell reloadData:[[CityManager sharedInstance].cities objectAtIndex:indexPath.row]];
 

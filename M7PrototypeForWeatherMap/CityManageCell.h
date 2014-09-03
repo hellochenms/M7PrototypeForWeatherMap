@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 @class City;
 
-@interface LocationManageCell : UITableViewCell
+@interface CityManageCell : UITableViewCell
 - (void)reloadData:(City *)city;
 @end

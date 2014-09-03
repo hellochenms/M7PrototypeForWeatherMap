@@ -1,5 +1,5 @@
 //
-//  LocationManageViewController.h
+//  CityAddCollectionViewCell.h
 //  M7PrototypeForWeatherMap
 //
 //  Created by Chen Meisong on 14-8-27.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LocationManageViewController : UIViewController
-
+@interface AddCityHotCityCell : UICollectionViewCell
+- (void)reloadData:(NSString *)data isExists:(BOOL)isExists;
 @end

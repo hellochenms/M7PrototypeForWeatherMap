@@ -6,13 +6,13 @@
 //  Copyright (c) 2014年 chenms.m2. All rights reserved.
 //
 
-#import "CityAddSearchResultCell.h"
+#import "AddCitySearchResultCell.h"
 
-@interface CityAddSearchResultCell()
+@interface AddCitySearchResultCell()
 @property (nonatomic) UILabel *addressLabel;
 @end
 
-@implementation CityAddSearchResultCell
+@implementation AddCitySearchResultCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

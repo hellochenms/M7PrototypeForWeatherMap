@@ -1,5 +1,5 @@
 //
-//  CityAddSearchResultCell.h
+//  LocationManageViewController.h
 //  M7PrototypeForWeatherMap
 //
 //  Created by Chen Meisong on 14-8-27.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CityAddSearchResultCell : UITableViewCell
-- (void)reloadData:(NSString *)address isExists:(BOOL)isExists;
+@interface CityManageViewController : UIViewController
+
 @end

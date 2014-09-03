@@ -7,7 +7,7 @@
 //
 
 #import "DirectionManageCell.h"
-#import "CityManager.h"
+#import "DirectionManager.h"
 #import "City.h"
 
 @interface DirectionManageCell ()
@@ -31,8 +31,8 @@
 
 #pragma mark - reload Data
 - (void)reloadData:(NSDictionary *)directionSrcDestDict{
-    City *srcCity = [directionSrcDestDict objectForKey:kCMDictKeySrcCity];
-    City *destCity = [directionSrcDestDict objectForKey:kCMDictKeyDestCity];
+    City *srcCity = [directionSrcDestDict objectForKey:kDMDictKeySrcCity];
+    City *destCity = [directionSrcDestDict objectForKey:kDMDictKeyDestCity];
     self.nameLabel.text = [NSString stringWithFormat:@"%@到%@", srcCity.name, destCity.name];
 }
 @end

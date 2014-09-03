@@ -16,7 +16,7 @@ typedef enum {
     ALVAddViewTypeEnableAllCity,
 } ALVAddViewType;
 
-@interface AddLocationView : UIView
+@interface AddCityView : UIView
 @property (nonatomic, copy) VoidEventHandler tapBackButtonHandler;
 @property (nonatomic, copy) ALVDidSelectCityHandler addFinishHandler;
 - (id)initWithFrame:(CGRect)frame type:(ALVAddViewType)type;
